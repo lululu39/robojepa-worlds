@@ -1,0 +1,31 @@
+{
+  "experiment": "capsaicin-decoder-gate",
+  "formal": false,
+  "seed": 42,
+  "height": 176,
+  "width": 320,
+  "input_dim": 1664,
+  "decoder_input_dim": 1408,
+  "adapter_warmup_steps": 16,
+  "joint_steps": 48,
+  "max_seconds": 900,
+  "batch_size": 4,
+  "adapter_lr": 0.001,
+  "decoder_lr": 0.00001,
+  "weight_decay": 0.1,
+  "grad_clip": 1.0,
+  "pixel_weight": 10.0,
+  "lpips_weight": 1.0,
+  "predictor_selected_step": 1600,
+  "checkpoint": {
+    "repo_id": "facebook/jepa-wms",
+    "revision": "9b9c41ef249466630dbf1a20e78391865d07b3b9",
+    "filename": "vjepa2_vitg_256_INet.pth.tar",
+    "bytes": 1837961630
+  },
+  "vgg": {
+    "url": "https://download.pytorch.org/models/vgg16-397923af.pth",
+    "filename": "vgg16-397923af.pth",
+    "bytes": 553433881
+  }
+}

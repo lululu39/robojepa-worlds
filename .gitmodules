@@ -7,3 +7,6 @@
 [submodule "vendor/micro_world"]
 	path = vendor/micro_world
 	url = https://github.com/AMD-AGI/Micro-World.git
+[submodule "vendor/jepa_wms"]
+	path = vendor/jepa_wms
+	url = https://github.com/facebookresearch/jepa-wms.git

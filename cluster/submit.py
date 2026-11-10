@@ -43,7 +43,8 @@ def changed_inputs(reference,commit,paths):
 
 def pack_source(target):
     source=dict(commit=command(['git','rev-parse','HEAD']),upstream={
-        n:command(['git','rev-parse','HEAD'],ROOT/'vendor'/n) for n in ['robo_jepa','vjepa2','micro_world']})
+        n:command(['git','rev-parse','HEAD'],ROOT/'vendor'/n)
+        for n in ['robo_jepa','vjepa2','micro_world','jepa_wms'] if (ROOT/'vendor'/n).is_dir()})
     files=command(['git','ls-files','--recurse-submodules']).splitlines()
     with tarfile.open(target,'w') as tar:
         for name in files:
