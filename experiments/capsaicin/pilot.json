@@ -39,7 +39,7 @@
   "checkpointing": true,
   "mouse_units": "degrees",
   "preprocess": "microworld_crop_halfsize_imagenet",
-  "formal": false,
+  "formal": true,
   "auto_train": false,
-  "milestone": "latent_adaptation_preflight_not_video_generation"
+  "milestone": "predictor_action_adaptation_not_video_generation"
 }

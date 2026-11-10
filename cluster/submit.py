@@ -23,10 +23,22 @@ PREPARATION_CODE=['robojepa_worlds/common.py','robojepa_worlds/capsaicin.py',
                   'robojepa_worlds/reference.py','robojepa_worlds/prepare.py','vendor/micro_world',
                   'uv.lock','pyproject.toml','experiments/capsaicin/pilot.json',
                   'experiments/capsaicin/dataset-manifest.json','cluster/worker.sh']
+CONFIG_PATH='experiments/capsaicin/pilot.json'
+# Authorization/status metadata does not change cached tensors or GPU numerics.
+EXECUTION_METADATA={'formal','auto_train','milestone'}
 
 
 def command(args,cwd=ROOT):
     return subprocess.check_output(args,cwd=cwd,text=True,timeout=90).strip()
+
+
+def changed_inputs(reference,commit,paths):
+    changed=command(['git','diff','--name-only',reference,commit,'--',*paths]).splitlines()
+    if CONFIG_PATH in changed:
+        configs=[json.loads(command(['git','show',f'{rev}:{CONFIG_PATH}'])) for rev in [reference,commit]]
+        scientific=[{k:v for k,v in cfg.items() if k not in EXECUTION_METADATA} for cfg in configs]
+        if scientific[0]==scientific[1]: changed.remove(CONFIG_PATH)
+    return changed
 
 
 def pack_source(target):
@@ -50,7 +62,7 @@ def validate_inputs(stage,commit):
     preparation=read_json(ROOT/'experiments/capsaicin/reports/prepare.json')
     if not preparation.get('complete') or preparation.get('schema')!=2:
         raise RuntimeError('Successful schema-2 preparation required')
-    if command(['git','diff','--name-only',preparation['source']['commit'],commit,'--',*PREPARATION_CODE]):
+    if changed_inputs(preparation['source']['commit'],commit,PREPARATION_CODE):
         raise RuntimeError('Preparation source is incompatible with the queued worker')
     for name in ['runtime.tar','capsaicin-data.tar']+(['robojepa-source-weights.tar'] if stage=='gate' else []):
         artifact=STAGING/name
@@ -60,15 +72,27 @@ def validate_inputs(stage,commit):
     if stage in ['encode','train']:
         gate=read_json(ROOT/'experiments/capsaicin/reports/gate.json')
         if not gate.get('complete'): raise RuntimeError('GPU gate required')
-        if command(['git','diff','--name-only',gate['source']['commit'],commit,'--',*INPUT_CODE]):
+        if changed_inputs(gate['source']['commit'],commit,INPUT_CODE):
             raise RuntimeError('Queued worker differs from the GPU-validated implementation')
         compact=STAGING/'robojepa-weights.tar'
         if not compact.is_file() or compact.stat().st_size!=gate['compact_weights_archive_bytes']:
             raise RuntimeError('Missing/incomplete compact weights from GPU gate')
     if stage=='train':
         for i in range(4):
-            if not read_json(ROOT/f'experiments/capsaicin/reports/encode-{i}.json').get('complete'):
+            report=read_json(ROOT/f'experiments/capsaicin/reports/encode-{i}.json')
+            if not report.get('complete') or report.get('shard')!=i or report.get('shards')!=4:
                 raise RuntimeError('All encoding shards must complete')
+            if changed_inputs(report['source']['commit'],commit,INPUT_CODE):
+                raise RuntimeError('Feature encoding implementation changed')
+            # Inspect tar headers and sizes only, never tensor contents on the AP.
+            with tarfile.open(STAGING/f'features-{i}.tar','r:') as archive:
+                members=archive.getmembers()
+            files=[m for m in members if m.isfile()]
+            if (len(files)!=report['clips'] or sum(m.size for m in files)!=report['bytes']
+                    or any(not m.name.startswith('features/') or not m.name.endswith('.pt')
+                           or '..' in Path(m.name).parts for m in files)
+                    or any(not (m.isfile() or m.isdir()) for m in members)):
+                raise RuntimeError('Feature archive size/layout mismatch')
 
 
 def release_deferred(state):
@@ -102,7 +126,7 @@ def main():
     if a.defer and a.stage not in ['gate','encode']: p.error('--defer supports only gate/encode')
     if a.stage=='train':
         cfg=read_json(ROOT/'experiments/capsaicin/pilot.json')
-        if not cfg['formal']: raise RuntimeError('Preflight only: complete the RGB task path before formal training')
+        if not cfg['formal']: raise RuntimeError('Formal predictor training is not enabled')
     key=a.stage+(f'-{a.shard}' if a.stage=='encode' else '')
     JOBS.mkdir(exist_ok=True); STAGING.mkdir(parents=True,exist_ok=True)
     with (JOBS/'workflow.lock').open('a') as lock:
@@ -151,12 +175,15 @@ def main():
                 artifact=STAGING/f'features-{i}.tar'
                 if not artifact.is_file() or not artifact.stat().st_size: raise RuntimeError('Missing feature archive')
                 inputs.append('osdf:///chtc'+str(artifact))
-            inputs.append('/home/yzhong239/.netrc')
+            credential=Path('/home/yzhong239/.netrc')
+            if credential.stat().st_mode & 0o777 != 0o600:
+                raise RuntimeError('W&B credential permissions must be 0600')
+            inputs.append(str(credential))
         lines=['universe = vanilla',f'container_image = {IMAGE}','executable = worker.sh',f'arguments = {args}',
                'should_transfer_files = YES','when_to_transfer_output = ON_EXIT','stream_output = True','stream_error = True',
                'requirements = (HasCHTCStaging == true)','request_cpus = '+('2' if a.stage=='prepare' else '4'),
-               'request_memory = '+('8GB' if a.stage=='prepare' else '48GB'),
-               'request_disk = '+('120GB' if a.stage=='prepare' else '160GB' if a.stage in ['gate','train'] else '100GB'),
+               'request_memory = '+('8GB' if a.stage=='prepare' else '16GB' if a.stage=='train' else '48GB'),
+               'request_disk = '+('120GB' if a.stage=='prepare' else '160GB' if a.stage=='gate' else '100GB'),
                'transfer_input_files = '+','.join(inputs),'transfer_output_files = '+','.join(outputs),
                'transfer_output_remaps = "'+';'.join(remaps)+'"',
                'log = logs/job.log','output = logs/job.out','error = logs/job.err',
