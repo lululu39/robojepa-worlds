@@ -54,10 +54,10 @@ class WorkflowContracts(unittest.TestCase):
 
     def test_only_explicit_dependency_holds_are_expected(self):
         state={'job':'123.0','waiting_dependencies':True}
-        ad=dict(JobStatus=5,NumJobStarts=0,HoldReasonCode=1,RoboJepaWaitingDependencies=True)
+        ad=dict(JobStatus=5,NumJobStarts=0,HoldReasonCode=15,RoboJepaWaitingDependencies=True)
         with patch.object(workflow,'command',return_value=json.dumps([ad])):
             self.assertEqual(workflow.query(state)[0],5)
-        for changed in [dict(ad,NumJobStarts=1),dict(ad,HoldReasonCode=12),dict(ad,RoboJepaWaitingDependencies=False)]:
+        for changed in [dict(ad,NumJobStarts=1),dict(ad,HoldReasonCode=1),dict(ad,HoldReasonCode=12),dict(ad,RoboJepaWaitingDependencies=False)]:
             with patch.object(workflow,'command',return_value=json.dumps([changed])):
                 with self.assertRaises(RuntimeError): workflow.query(state)
 
@@ -80,7 +80,7 @@ class WorkflowContracts(unittest.TestCase):
             root=Path(tmp); (root/'encode-0').mkdir()
             state={'job':'123.0','key':'encode-0','stage':'encode','source':{'commit':'abc'},'waiting_dependencies':True}
             (root/'encode-0/state.json').write_text(json.dumps(state))
-            ad=dict(JobStatus=5,NumJobStarts=0,HoldReasonCode=1,RoboJepaWaitingDependencies=True)
+            ad=dict(JobStatus=5,NumJobStarts=0,HoldReasonCode=15,RoboJepaWaitingDependencies=True)
             with patch.object(submit_module,'JOBS',root), \
                  patch.object(submit_module,'command',return_value=json.dumps([ad])) as command, \
                  patch.object(submit_module,'validate_inputs',side_effect=RuntimeError('GPU gate required')):

@@ -70,7 +70,7 @@ def release_deferred(state):
         current=read_json(JOBS/state['key']/'state.json')
         if not current.get('waiting_dependencies'): return
         ad=json.loads(command(['condor_q',current['job'],'-json']))[0]
-        if not (ad['JobStatus']==5 and ad.get('NumJobStarts',0)==0 and ad.get('HoldReasonCode')==1
+        if not (ad['JobStatus']==5 and ad.get('NumJobStarts',0)==0 and ad.get('HoldReasonCode')==15
                 and ad.get('RoboJepaWaitingDependencies') is True):
             raise RuntimeError('Unexpected deferred-job state; do not release')
         validate_inputs(current['stage'],current['source']['commit'])
@@ -174,9 +174,9 @@ def main():
         if a.stage!='prepare': assert ad['RequestGPUs']==1 and 'H100|H200' in ad['RequireGPUs']
         if a.stage=='train':
             assert ad['SuccessCheckpointExitCode']==85 and '.netrc' in ad['EncryptInputFiles']
-        write_json(root/'verified.json',{k:ad.get(k) for k in ['ClusterId','ProcId','JobStatus','RequestCpus','RequestMemory','RequestDisk','RequestGPUs','RequireGPUs','TransferInput','TransferOutput','ContainerImage','SuccessCheckpointExitCode']})
+        write_json(root/'verified.json',{k:ad.get(k) for k in ['ClusterId','ProcId','JobStatus','RequestCpus','RequestMemory','RequestDisk','RequestGPUs','RequireGPUs','TransferInput','TransferOutput','ContainerImage','SuccessCheckpointExitCode','HoldReasonCode','RoboJepaWaitingDependencies']})
         if a.defer:
-            assert ad.get('RoboJepaWaitingDependencies') is True and ad.get('HoldReasonCode')==1
+            assert ad.get('RoboJepaWaitingDependencies') is True and ad.get('HoldReasonCode')==15
             state['status']='waiting_dependencies'
         else:
             command(['condor_release',job]); state['status']='queued'

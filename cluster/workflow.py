@@ -21,7 +21,7 @@ def query(state):
     if not ads: raise RuntimeError('Job absent from both queue and history: '+state['job'])
     ad=ads[0]; status=ad['JobStatus']
     waiting=(status==5 and state.get('waiting_dependencies') is True and ad.get('NumJobStarts',0)==0
-             and ad.get('HoldReasonCode')==1 and ad.get('RoboJepaWaitingDependencies') is True)
+             and ad.get('HoldReasonCode')==15 and ad.get('RoboJepaWaitingDependencies') is True)
     if status==3 or (status==5 and not waiting) or (status==4 and (ad.get('ExitBySignal') or ad.get('ExitCode')!=0)):
         raise RuntimeError(f"Job {state['job']} failed/held/removed (status={status}, exit={ad.get('ExitCode')})")
     return status,ad
