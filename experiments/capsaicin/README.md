@@ -26,7 +26,7 @@ Latent preflight reports 1/2/5/10/20-step errors, corresponding to 4/8/20/40/80 
 
 ## Execution
 
-`python3 -m cluster.submit prepare` submits preparation; `python3 -m cluster.workflow` collects successful reports and advances to the GPU gate. Current `auto_train=false` makes the controller exit after the gate. `formal=false` also rejects direct formal submission. These are implementation-status checks, not a new user-approval requirement.
+`python3 -m cluster.submit prepare` submits preparation. Pre-submit the GPU gate with `python3 -m cluster.submit gate --defer`, then each of the four encoding jobs with `python3 -m cluster.submit encode --shard N --defer` (N=0..3). These jobs enter the real Condor queue held on their dependencies; they do not reserve a GPU while waiting. `python3 -m cluster.workflow` releases the same job IDs after successful dependencies, collects reports, and exits after all four encoding shards finish because `auto_train=false`. Artifact sizes, source compatibility and the GPU gate are checked before release; an unexpected hold/failure stops the workflow. `formal=false` also rejects direct formal submission. These are implementation-status checks, not a new user-approval requirement.
 
 GPU validation covers real pretrained tensors, upstream action/reversal parity, causality, action gradients, frozen-weight preservation, an 81-source-frame training window, 20-step rollout and numerical checkpoint recovery. Static checks cannot substitute for this gate. The earlier full-predictor plus random-predictor pilot is not automatically launched.
 

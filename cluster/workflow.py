@@ -9,7 +9,7 @@ import tarfile
 import time
 
 from robojepa_worlds.common import ROOT,read_json,write_json
-from .submit import JOBS,command
+from .submit import JOBS,command,release_deferred
 
 REPORTS=ROOT/'experiments/capsaicin/reports'
 
@@ -20,7 +20,9 @@ def query(state):
         ads=json.loads(command(['condor_history',state['job'],'-limit','1','-json']) or '[]')
     if not ads: raise RuntimeError('Job absent from both queue and history: '+state['job'])
     ad=ads[0]; status=ad['JobStatus']
-    if status in [3,5] or (status==4 and (ad.get('ExitBySignal') or ad.get('ExitCode')!=0)):
+    waiting=(status==5 and state.get('waiting_dependencies') is True and ad.get('NumJobStarts',0)==0
+             and ad.get('HoldReasonCode')==1 and ad.get('RoboJepaWaitingDependencies') is True)
+    if status==3 or (status==5 and not waiting) or (status==4 and (ad.get('ExitBySignal') or ad.get('ExitCode')!=0)):
         raise RuntimeError(f"Job {state['job']} failed/held/removed (status={status}, exit={ad.get('ExitCode')})")
     return status,ad
 
@@ -79,15 +81,19 @@ def tick():
             if not (REPORTS/(key+'.json')).exists(): updates.append(collect(state))
         else: active.append(key)
     publish(updates)
+    for key,state in states.items():
+        if state.get('waiting_dependencies') and set(state.get('dependencies',[])).issubset(completed):
+            release_deferred(state)
+            observations[key]['status']=1
     write_json(JOBS/'workflow-status.json',dict(time=time.time(),jobs=observations,completed=sorted(completed),active=active))
     if 'prepare' not in states: submit('prepare')
     elif 'prepare' in completed and 'gate' not in states: submit('gate')
     elif 'gate' in completed:
         cfg=read_json(ROOT/'experiments/capsaicin/pilot.json')
-        if not cfg.get('auto_train',False): return 'preflight_complete'
         for i in range(4):
             if f'encode-{i}' not in states: submit('encode','--shard',str(i))
         if all(f'encode-{i}' in completed for i in range(4)):
+            if not cfg.get('auto_train',False): return 'encoding_complete'
             if 'train' not in states: submit('train')
     return 'complete' if 'train' in completed else 'waiting'
 
@@ -104,7 +110,7 @@ def main():
                 write_json(JOBS/'workflow-error.json',dict(time=time.time(),error=str(error)))
                 (JOBS/'STOPPED').write_text('Controller stopped on failure; inspect before resuming.\n')
                 raise
-            if a.once or status in ['complete','stopped','preflight_complete']: return
+            if a.once or status in ['complete','stopped','encoding_complete']: return
             time.sleep(45)
 
 
