@@ -23,13 +23,15 @@ def main():
     if not torch.cuda.is_available() or torch.cuda.device_count()!=1: raise RuntimeError('One GPU required')
     torch.set_num_threads(4); cfg=read_json(ROOT/'experiments/capsaicin/pilot.json')
     cfg['initialization']=a.initialization
+    if not cfg['formal']: raise RuntimeError('This config is a preflight; RGB task integration is not complete')
     source=read_json(ROOT/'source.json'); index=read_json(Path(a.data)/'index.json')
     cfg['source']=source; cfg['dataset_revision']=index['source']['revision']
     random.seed(cfg['seed']); np.random.seed(cfg['seed']); torch.manual_seed(cfg['seed'])
     out=Path(a.out); ckpt=Path(a.checkpoints); out.mkdir(exist_ok=True); ckpt.mkdir(exist_ok=True)
-    train=FeatureDataset(a.data,a.features,'train',cfg['context_frames']+cfg['rollout_steps'],cfg['seed'])
+    train_frames=(cfg['source_window_frames']-1)//cfg['frame_stride']+1
+    train=FeatureDataset(a.data,a.features,'train',train_frames,cfg['seed'],cfg['temporal_reverse_ratio'])
     val=FeatureDataset(a.data,a.features,'val',cfg['context_frames']+max(cfg['eval_horizons']))
-    model=NavigationModel(a.weights,a.initialization,cfg['seed']).cuda(); optimizer=make_optimizer(model,cfg)
+    model=NavigationModel(a.weights,a.initialization,cfg['seed'],cfg['train_scope']).cuda(); optimizer=make_optimizer(model,cfg)
     step=position=0; previous_seconds=0.; best=None
     if (ckpt/'latest.pt').exists():
         restored=checkpoint.restore(ckpt/'latest.pt',model,optimizer,a.run_id,cfg)
@@ -73,7 +75,7 @@ def main():
         log({'train/loss':loss_sum,'train/teacher':teacher,'train/rollout':ar,'train/grad_norm':float(gradient),
              'train/seconds_per_step':time.monotonic()-started,'train/elapsed_seconds':elapsed(),
              'train/lr':optimizer.param_groups[0]['lr'],'train/data_position':position,
-             'train/visual_tokens_seen':position*cfg['batch_size']*(cfg['context_frames']+cfg['rollout_steps'])*300,
+             'train/visual_tokens_seen':position*cfg['batch_size']*train_frames*(cfg['height']//16)*(cfg['width']//16),
              'gpu/peak_memory_bytes':torch.cuda.max_memory_allocated()})
         if step%cfg['eval_every']==0:
             metrics=evaluate(model,val,cfg,limit=8); log({'dev/'+k:v for k,v in metrics.items()})

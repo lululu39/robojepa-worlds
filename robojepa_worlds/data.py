@@ -5,11 +5,16 @@ import random
 
 import torch
 from .common import read_json
+from .capsaicin import chunk_rows
+from .reference import reverse_sample
 
 
 class FeatureDataset:
-    def __init__(self,data,features,split,frames,seed=42):
-        self.rows=[r for r in read_json(Path(data)/'index.json')['clips'] if r['split']==split]
+    def __init__(self,data,features,split,frames,seed=42,reverse_ratio=0.):
+        index=read_json(Path(data)/'index.json')
+        if index.get('schema')!=2: raise ValueError('Stale data contract')
+        self.rows=[r for r in index['clips'] if r['split']==split]
+        self.reverse_ratio=reverse_ratio; self.stride=index['frame_stride']
         self.root=Path(features); self.frames=frames; self.seed=seed; self.cache=OrderedDict()
         if not self.rows: raise ValueError('Empty split '+split)
         for r in self.rows:
@@ -20,7 +25,8 @@ class FeatureDataset:
         key=self.rows[i]['id']
         if key not in self.cache:
             value=torch.load(self.root/(key+'.pt'),map_location='cpu',mmap=True,weights_only=True)
-            if value['id']!=key or value['split']!=self.rows[i]['split']: raise ValueError('Cache identity mismatch')
+            if value.get('schema')!=2 or value['id']!=key or value['split']!=self.rows[i]['split']:
+                raise ValueError('Cache identity/contract mismatch')
             self.cache[key]=value
             if len(self.cache)>8: self.cache.popitem(last=False)
         self.cache.move_to_end(key)
@@ -32,8 +38,15 @@ class FeatureDataset:
         for _ in range(batch_size):
             value=self.clip(rng.randrange(len(self.rows)))
             start=rng.randrange(len(value['features'])-self.frames+1)
-            features.append(value['features'][start:start+self.frames])
-            actions.append(value['actions'][start:start+self.frames-1])
+            x=value['features'][start:start+self.frames]
+            left=value['indices'][start]; right=value['indices'][start+self.frames-1]
+            rows=value['frame_actions'][left:right+1].clone(); rows[0]=0
+            # Upstream reversal assumes static camera motion and no jumping.
+            if rng.random()<self.reverse_ratio and not rows[:,4].any():
+                x,mouse,keyboard=reverse_sample(x,rows)
+                rows=torch.cat([keyboard,mouse],dim=-1)
+            _,chunks=chunk_rows(rows.tolist(),len(rows),self.stride)
+            features.append(x); actions.append(torch.tensor(chunks))
         return torch.stack(features).cuda(),torch.stack(actions).cuda()
 
     def evaluation_windows(self,windows=2,limit=None):

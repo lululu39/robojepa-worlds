@@ -1,0 +1,22 @@
+{
+  "review": "Micro-World task alignment",
+  "reference_commit": "ad8c653c896a48c19cebb3dd4ccf802b40421c7a",
+  "static_tests_passed": 13,
+  "checks": [
+    "stdlib execution of upstream scalar action parser",
+    "actual upstream W/S repair tool",
+    "incoming-frame chunk boundaries",
+    "mouse degree units",
+    "all 440 clips in eight asset families",
+    "preflight cannot submit formal training"
+  ],
+  "split_counts": {
+    "train": 332,
+    "val": 20,
+    "test": 88
+  },
+  "gpu_validation": "pending",
+  "video_task_complete": false,
+  "automatic_execution": "prepare then GPU preflight only",
+  "formal_training_started": false
+}

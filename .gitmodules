@@ -4,3 +4,6 @@
 [submodule "vendor/vjepa2"]
 	path = vendor/vjepa2
 	url = https://github.com/facebookresearch/vjepa2.git
+[submodule "vendor/micro_world"]
+	path = vendor/micro_world
+	url = https://github.com/AMD-AGI/Micro-World.git

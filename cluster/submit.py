@@ -23,7 +23,7 @@ def command(args,cwd=ROOT):
 
 def pack_source(target):
     source=dict(commit=command(['git','rev-parse','HEAD']),upstream={
-        n:command(['git','rev-parse','HEAD'],ROOT/'vendor'/n) for n in ['robo_jepa','vjepa2']})
+        n:command(['git','rev-parse','HEAD'],ROOT/'vendor'/n) for n in ['robo_jepa','vjepa2','micro_world']})
     files=command(['git','ls-files','--recurse-submodules']).splitlines()
     with tarfile.open(target,'w') as tar:
         for name in files:
@@ -41,6 +41,11 @@ def main():
     p.add_argument('--shard',type=int,choices=range(4),default=0)
     p.add_argument('--initialization',choices=['pretrained','random'],default='pretrained')
     a=p.parse_args()
+    if a.stage=='train':
+        cfg=read_json(ROOT/'experiments/capsaicin/pilot.json')
+        if not cfg['formal']: raise RuntimeError('Preflight only: complete the RGB task path before formal training')
+        if cfg['train_scope']=='action_only' and a.initialization!='pretrained':
+            raise RuntimeError('Random frozen predictor is not a valid control')
     key=a.stage+(f'-{a.shard}' if a.stage=='encode' else f'-{a.initialization}' if a.stage=='train' else '')
     JOBS.mkdir(exist_ok=True); STAGING.mkdir(parents=True,exist_ok=True)
     with (JOBS/'workflow.lock').open('a') as lock:

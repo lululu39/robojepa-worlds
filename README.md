@@ -1,27 +1,23 @@
 # RoboJEPA Worlds
 
-Fine-tune pretrained **RoboJEPA** for action-conditioned prediction in interactive environments. Other projects supply datasets and task definitions; their world-model checkpoints are not used.
+Adapt **pretrained RoboJEPA** to tasks defined by existing interactive-world-model work. The task's original code supplies the data, action, inference and evaluation contracts; the model adaptation retains RoboJEPA weights. Other world-model generator checkpoints are not used.
 
 ## Layout
 
-- `robojepa_worlds/`: shared data, model, training, evaluation and checkpoint code.
-- `experiments/capsaicin/`: first-person navigation experiment, fixed configuration and small reports.
-- `cluster/`: independent single-GPU HTCondor jobs and resumable transfers.
-- `vendor/`: pinned official RoboJEPA and V-JEPA 2 source submodules, under their respective licenses.
-- `tests/`: data contracts, causality, gradient and recovery checks.
+- `robojepa_worlds/`: data adapters, model interface, training, evaluation and recovery.
+- `experiments/capsaicin/`: first-person action control, fixed configuration and small reports.
+- `cluster/`: independent single-GPU HTCondor jobs with bounded execution.
+- `vendor/`: pinned official RoboJEPA, V-JEPA 2 and Micro-World code.
+- `tests/`: stdlib contracts; real tensor/gradient/recovery checks run in the compute-node gate.
 
-Clone with `git clone --recurse-submodules`. Resolve dependencies with the committed `uv.lock`. GPU work runs on compute nodes; the submit node only edits code, submits jobs and reads reports.
+Clone with `git clone --recurse-submodules`. Dependencies are pinned in `uv.lock`. Follow [AGENTS.md](AGENTS.md): reference the original task implementation first, document required adaptations, and never substitute a latent-loss result for video-generation evaluation.
 
-## First experiment
+## Current milestone
 
-Capsaicin 200-frame videos, one view at 240×320, frozen V-JEPA 2.1 encoder and the released 100M RoboJEPA predictor. A new embodiment receives keyboard and mouse commands, with zero proprioception. Collision and invalid-jump outcomes are **never inputs**. The first milestone is latent dynamics prediction, not RGB generation or a playable simulator.
+The first task is Micro-World 2's Capsaicin image-plus-keyboard/mouse controlled video generation. Current code implements a **latent-adaptation preflight**, including direct upstream action parsing, a frozen RoboJEPA 100M backbone with new task conditioning, and first-frame-conditioned latent rollouts. The RGB decoder and video-level evaluation are not integrated yet. `formal=false` and `auto_train=false` prevent the old latent pilot from silently becoming a formal video-generation experiment.
 
-Initial bounded pilot: one pretrained-predictor fine-tune and one randomly initialized predictor control, identical frozen encoder and training data, each capped at 2,000 optimizer updates and 6 GPU-hours of training. No automatic larger-model run or sweep. The GPU correctness gate must pass first. These pilot limits are engineering choices, not a claim of convergence.
+The controller currently runs preparation and one GPU correctness gate, then exits. It does not launch the earlier two-branch full-predictor/random-control proposal. No formal run has started. The prior ceiling of 2,000 optimizer updates / 6 training GPU-hours is retained in configuration, not expanded.
 
-Formal runs use W&B entity `yibozhong657-none`, project `robojepa-capsaicin`; diagnostic jobs never create W&B runs. Future subtasks get separate projects. Credentials, datasets, features and checkpoints stay outside Git. Small JSON metrics and sanitized job summaries are versioned under the experiment.
+See [Capsaicin](experiments/capsaicin/README.md) and the [reference-code audit](experiments/capsaicin/REFERENCE_AUDIT.md) for exact reuse, corrections and remaining differences. Formal runs, when the task path is complete, use W&B `yibozhong657-none/robojepa-capsaicin`; diagnostics create no run. New subtasks use separate projects.
 
-See [Capsaicin](experiments/capsaicin/README.md) for data semantics, splits and commands. The repository records the exact source commits, upstream dataset revision, configuration, dependency versions and GPU used. It does not perform content-hash scans.
-
-## Licenses
-
-Original orchestration and adaptation code is MIT licensed. `vendor/robo_jepa` and `vendor/vjepa2` retain upstream licenses, including non-commercial model/source restrictions where applicable. Dataset and pretrained-weight licenses remain applicable independently. No pretrained tensors or dataset media are redistributed here.
+Credentials, data, features and checkpoints stay outside Git. Configuration, source commits, dataset revision, dependency versions and small result reports are retained. See [THIRD_PARTY.md](THIRD_PARTY.md) for upstream licenses and attribution.

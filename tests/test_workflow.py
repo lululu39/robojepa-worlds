@@ -36,5 +36,18 @@ class WorkflowContracts(unittest.TestCase):
             with patch.object(workflow,'JOBS',root),patch.object(workflow,'submit') as submit:
                 self.assertEqual(workflow.tick(),'stopped'); submit.assert_not_called()
 
+    def test_preflight_does_not_submit_training_or_encoding(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); reports=root/'reports'; reports.mkdir()
+            for stage in ['prepare','gate']:
+                (root/stage).mkdir()
+                (root/stage/'state.json').write_text(json.dumps({'key':stage,'stage':stage,'job':'123.0'}))
+                (reports/(stage+'.json')).write_text('{"complete":true}')
+            with patch.object(workflow,'JOBS',root),patch.object(workflow,'REPORTS',reports), \
+                 patch.object(workflow,'command',return_value=''), \
+                 patch.object(workflow,'query',return_value=(4,{'NumJobStarts':1})), \
+                 patch.object(workflow,'submit') as submit:
+                self.assertEqual(workflow.tick(),'preflight_complete'); submit.assert_not_called()
+
 
 if __name__=='__main__': unittest.main()

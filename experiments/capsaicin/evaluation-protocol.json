@@ -1,0 +1,14 @@
+{
+  "task": "Micro-World 2 Capsaicin first-frame/action-conditioned video generation",
+  "reference": "vendor/micro_world",
+  "reference_commit": "ad8c653c896a48c19cebb3dd4ccf802b40421c7a",
+  "observed_frames": 1,
+  "source_window_frames": 81,
+  "action_units": "degrees and seven keyboard one-hot channels",
+  "action_alignment": "incoming frame; row zero is zero",
+  "process_collisions": true,
+  "preflight_only": {"state_stride": 4, "resolution": [176, 320], "metrics": ["latent_mae", "latent_cosine", "persistence", "action_sensitivity"]},
+  "task_completion_requires": ["RGB decoder connected to RoboJEPA predictions", "causal rollout exporting generated/reference videos with matched frame times", "keyboard/camera controllability", "PSNR", "SSIM", "LPIPS with verified normalization", "FVD", "temporal consistency", "motion smoothness"],
+  "unresolved": ["RoboJEPA decoder checkpoint availability and Capsaicin reconstruction quality", "GameWorldScore/IDM dependencies and domain validity", "RGB inference and evaluation implementation"],
+  "video_task_complete": false
+}

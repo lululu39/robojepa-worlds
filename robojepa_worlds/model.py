@@ -17,7 +17,7 @@ def predictor_config():
 
 
 class NavigationModel(nn.Module):
-    def __init__(self,weights,initialization='pretrained',seed=42):
+    def __init__(self,weights,initialization='pretrained',seed=42,train_scope='action_only'):
         super().__init__(); upstream_path()
         from app.robo_jepa.robo_jepa.models.predictor import vit_predictor
         torch.manual_seed(seed)
@@ -54,6 +54,22 @@ class NavigationModel(nn.Module):
             self.load_report.update(strict=True,tensors=len(state),expanded=expanded)
             del checkpoint,state,raw
         elif initialization!='random': raise ValueError(initialization)
+        self.train_scope=train_scope
+        if train_scope=='action_only':
+            if initialization!='pretrained': raise ValueError('A frozen random trunk is not a useful control')
+            self.requires_grad_(False)
+            # Optimize new task rows only. Old embodiments and the entire trunk stay fixed.
+            selected={'action_encoder.patch_embed.w':-1,'action_encoder.patch_embed.b':0,
+                      'state_encoder.patch_embed.b':0,'embodiment_assignment_tokens':1}
+            for name,p in self.predictor.named_parameters():
+                if name in selected:
+                    axis=selected[name]; p.requires_grad_(True)
+                    def new_row_only(grad,axis=axis):
+                        mask=torch.zeros_like(grad); index=[slice(None)]*grad.ndim; index[axis]=n
+                        mask[tuple(index)]=grad[tuple(index)]; return mask
+                    p.register_hook(new_row_only)
+        elif train_scope!='full': raise ValueError(train_scope)
+        self.load_report['train_scope']=train_scope
 
     def forward(self,features,actions):
         b,t=features.shape[:2]
@@ -67,7 +83,8 @@ class NavigationModel(nn.Module):
 
 def latent_loss(pred,target):
     pred,target=pred.float(),target.float()
-    return F.l1_loss(pred,target)+.1*(1-F.cosine_similarity(pred,target,dim=-1).mean())
+    # Official RoboJEPA WorldModel.compute_loss optimizes MAE; cosine is diagnostic only.
+    return F.l1_loss(pred,target)
 
 
 def rollout(model,context,actions,steps):
@@ -75,16 +92,21 @@ def rollout(model,context,actions,steps):
     predictions=[]
     for k in range(steps):
         t=history.shape[1]
-        # Keep positions anchored while the full sequence remains below 16 frames.
-        if t>16: raise ValueError('Pilot rollout exceeds positional context budget')
-        y=model(history,actions[:,:t])[:,-1:]
+        left=max(0,t-16)
+        y=model(history[:,left:],actions[:,left:t])[:,-1:]
         predictions.append(y)
         history=torch.cat([history,y],dim=1)
     return torch.cat(predictions,dim=1)
 
 
-def objective(model,features,actions,context=4,steps=2):
-    teacher=model(features[:,:-1],actions)
+def objective(model,features,actions,context=1,steps=2):
+    # Overlapping causal windows respect the released 16-state positional table.
+    parts=[]; done=0
+    while done<actions.shape[1]:
+        stop=min(done+16,actions.shape[1]); left=max(0,stop-16)
+        prediction=model(features[:,left:stop],actions[:,left:stop])
+        parts.append(prediction[:,done-left:]); done=stop
+    teacher=torch.cat(parts,dim=1)
     one=latent_loss(teacher,features[:,1:])
     predicted=rollout(model,features[:,:context],actions,steps)
     ar=latent_loss(predicted,features[:,context:context+steps])
@@ -92,12 +114,13 @@ def objective(model,features,actions,context=4,steps=2):
 
 
 def make_optimizer(model,cfg):
+    if model.train_scope=='action_only' and cfg['weight_decay']!=0:
+        raise ValueError('Shared embodiment tables require zero decay to preserve old rows')
     groups={'trunk':[],'interface':[]}
     for name,p in model.named_parameters():
         if p.requires_grad:
             interface=any(x in name for x in ['action_encoder','state_encoder','embodiment_assignment'])
             groups['interface' if interface else 'trunk'].append(p)
-    return torch.optim.AdamW([
-        {'params':groups['trunk'],'lr':cfg['learning_rate'],'base_lr':cfg['learning_rate']},
-        {'params':groups['interface'],'lr':cfg['action_learning_rate'],'base_lr':cfg['action_learning_rate']}],
-        weight_decay=cfg['weight_decay'])
+    rates={'trunk':cfg['learning_rate'],'interface':cfg['action_learning_rate']}
+    return torch.optim.AdamW([{'params':params,'lr':rates[name],'base_lr':rates[name]}
+                             for name,params in groups.items() if params],weight_decay=cfg['weight_decay'])

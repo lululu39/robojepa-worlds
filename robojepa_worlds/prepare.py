@@ -10,7 +10,7 @@ import time
 import urllib.request
 
 from .common import ROOT, read_json, write_json
-from .capsaicin import action_chunks, make_splits, scene_id
+from .capsaicin import chunk_rows, make_splits, scene_id
 
 
 def download(url, path, expected=None):
@@ -37,6 +37,7 @@ def main():
     p=argparse.ArgumentParser(); p.add_argument('--out',default='prepared'); a=p.parse_args()
     out=Path(a.out); out.mkdir(exist_ok=True)
     manifest=read_json(ROOT/'experiments/capsaicin/dataset-manifest.json')
+    cfg=read_json(ROOT/'experiments/capsaicin/pilot.json')
     data=out/'data'; data.mkdir(exist_ok=True)
     def fetch(item):
         download(f"https://huggingface.co/datasets/{manifest['repo']}/resolve/{manifest['revision']}/{item['path']}",
@@ -45,6 +46,7 @@ def main():
         list(pool.map(fetch,manifest['files']))
     print('DATA_DOWNLOAD_COMPLETE',flush=True)
     import av
+    from .reference import reference_actions
     stems=[Path(x['path']).stem for x in manifest['files'] if x['path'].endswith('.mp4')]
     split,scenes=make_splits(stems)
     rows=[]
@@ -59,14 +61,18 @@ def main():
             if any(y<=x for x,y in zip(pts,pts[1:])):
                 raise ValueError(f'Non-monotonic timestamps: {stem}')
         meta=read_json(data/'200f/metadata-detection'/f'{stem}.json')
-        idx,actions=action_chunks(meta,count)
+        frame_rows=reference_actions(meta,count).tolist()
+        idx,actions=chunk_rows(frame_rows,count,cfg['frame_stride'])
         rows.append(dict(id=stem,scene=scene_id(stem),split=split[stem],frames=count,fps=fps,
-                         indices=idx,actions=actions,video=f'200f/video/{stem}.mp4'))
+                         indices=idx,actions=actions,frame_actions=frame_rows,
+                         video=f'200f/video/{stem}.mp4'))
     if any(r['frames']!=200 for r in rows):
         raise ValueError('Unexpected source frame count; inspect before continuing')
-    index={'source':manifest,'scenes':scenes,'clips':rows,'frame_stride':4,
-           'action_alignment':'command[t] maps frame[t] to frame[t+1]',
-           'ws_policy':'swap unless _sprite_ws_refixed', 'outcomes_are_inputs':False}
+    index={'schema':2,'source':manifest,'scenes':scenes,'clips':rows,'frame_stride':cfg['frame_stride'],
+           'action_alignment':'row[i] enters frame[i]; transition l->r uses rows[l+1:r+1]',
+           'mouse_units':'degrees','ws_policy':'swap unless _sprite_ws_refixed',
+           'process_collisions':True,'preprocess':{k:cfg[k] for k in ['height','width','reference_crop','preprocess']},
+           'reference':read_json(ROOT/'source.json')['upstream']['micro_world']}
     write_json(data/'index.json',index)
     # Published encoder file includes auxiliary tensors. Preserve only target_encoder.
     weights=out/'weights'; weights.mkdir(exist_ok=True)
@@ -85,7 +91,8 @@ def main():
     source.unlink()
     archive(out/'capsaicin-data.tar',[(data,'data')])
     archive(out/'robojepa-weights.tar',[(weights,'weights')])
-    summary=dict(complete=True,created_at=time.time(),clips=len(rows),scenes=scenes,
+    summary=dict(complete=True,created_at=time.time(),clips=len(rows),scenes=scenes,schema=2,
+                 reference_parser_parity_clips=len(rows),action_units='degrees',process_collisions=True,
                  split_counts={s:sum(r['split']==s for r in rows) for s in ['train','val','test']},
                  frames=sum(r['frames'] for r in rows),cached_frames=sum(len(r['indices']) for r in rows),
                  artifacts={p.name:p.stat().st_size for p in out.glob('*.tar')},

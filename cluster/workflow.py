@@ -83,12 +83,14 @@ def tick():
     if 'prepare' not in states: submit('prepare')
     elif 'prepare' in completed and 'gate' not in states: submit('gate')
     elif 'gate' in completed:
+        cfg=read_json(ROOT/'experiments/capsaicin/pilot.json')
+        if not cfg.get('auto_train',False): return 'preflight_complete'
         for i in range(4):
             if f'encode-{i}' not in states: submit('encode','--shard',str(i))
         if all(f'encode-{i}' in completed for i in range(4)):
-            for initialization in ['pretrained','random']:
+            for initialization in ['pretrained']:
                 if 'train-'+initialization not in states: submit('train','--initialization',initialization)
-    return 'complete' if all('train-'+i in completed for i in ['pretrained','random']) else 'waiting'
+    return 'complete' if 'train-pretrained' in completed else 'waiting'
 
 
 def main():
@@ -103,7 +105,7 @@ def main():
                 write_json(JOBS/'workflow-error.json',dict(time=time.time(),error=str(error)))
                 (JOBS/'STOPPED').write_text('Controller stopped on failure; inspect before resuming.\n')
                 raise
-            if a.once or status in ['complete','stopped']: return
+            if a.once or status in ['complete','stopped','preflight_complete']: return
             time.sleep(45)
 
 

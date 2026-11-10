@@ -1,36 +1,33 @@
-# Capsaicin navigation pilot
+# Capsaicin: Micro-World task, RoboJEPA adaptation
 
-Use only `200f/video/` and matching `200f/metadata-detection/` from `amd/Micro-World-Capsaicin`. The dataset revision and exact files/sizes are frozen in `dataset-manifest.json` before submission. Original metadata is retained; corrected labels are generated without modifying source files.
+The target is first-frame + keyboard/mouse controlled **video generation**, following [Micro-World 2](../../vendor/micro_world). Current execution is the latent-adaptation preflight. RGB generation and the original video metrics remain incomplete; there is no formal training or benchmark claim. Read [REFERENCE_AUDIT.md](REFERENCE_AUDIT.md) for the source comparison.
 
-## Task and actions
+## Data and actions
 
-Predict future visual latents from past visual latents and commanded controls. Per-frame keyboard fields `ws`, `ad`, `scs` and mouse `pitch_delta`, `yaw_delta` are converted into nine channels: W, S, A, D, jump, sneak, sprint, normalized pitch, normalized yaw. No collision or invalid-jump outcomes enter the model. Mouse degree values are normalized with the recorded `mouse_normalized_to_mc` factors (normally 1/15), matching the source convention without an additional sign flip.
+Only the fixed `200f/video/` and matching `200f/metadata-detection/` files from `amd/Micro-World-Capsaicin` are downloaded. The 440 clips occupy about 0.95 GB. Raw JSON is retained. Correct W/S once in memory using the upstream marker, then **call `VideoGameDataset._actions_to_tensors` directly**. Compare every clip's result against the small stdlib port before caching it.
 
-Apply the official Micro-World W/S correction once, unless `_sprite_ws_refixed` is already set. Action index `t` is interpreted as the command taking frame `t` to `t+1`; source timestamps and decoded frame counts are checked during preprocessing. At stride 4, four **ordered** nine-channel commands are concatenated (36 values) and padded to RoboJEPA's 64 input slots, preserving order and held keys. Frames without the complete command interval are dropped. This is commanded-action conditioning, not conditioning on realized displacement.
+Actions are incoming-frame controls: row `i` describes motion into frame `i`; the first frame has zero control. A transition from cached frame `l` to `r=l+4` consumes rows `l+1` through `r`, in order. Each row has W/S/A/D/jump/sneak/sprint/pitch/yaw; four rows give 36 values, padded to RoboJEPA's 64 slots. Mouse values use the upstream factor × 15 conversion into **degrees**. No extra inference-time pitch flip is applied.
 
-Use a deterministic 240×320 resize and ImageNet normalization, identical for all splits. Encode every fourth frame independently (`T=1`) with the official V-JEPA 2.1 image path, then layer-normalize tokens as in the released predictor. This caching policy has no random augmentation and is recorded as such. Expected cache size is about 22 GB at BF16, rather than 88 GB for all source frames.
+`process_collisions=True` matches the reference trainer: collision clears movement labels and invalid jump clears `scs`. These are **processed control labels**, not guaranteed raw player commands; collision outcomes affect the labels even though they are not separate input channels. This corrects the previous incompatible claim that outcomes never affected inputs.
 
-Split by scene prefix preceding `_aNNN_vNN`, keeping all camera anchors and action variants for each scene together. At least one scene is held out for validation and one for test; test is evaluated only at completion. Report both scene and trajectory counts. A small number of scenes makes this a pilot, not a broad generalization benchmark.
+Use the reference stage-2 default 352×640 center crop, then downsample to 176×320 for the single-GPU preflight. ImageNet normalization and independent-frame V-JEPA 2.1 encoding are JEPA-specific changes. Cache every fourth frame, layer-normalized, BF16: about 16 GB. Raw 200-frame action rows remain in each cache for exact temporal-window/reversal processing. Schema 2 rejects the old shifted-action cache.
 
-## Model and budget
+The source trainer samples 81-frame windows. Our windows cover the same 80 transition frames using 21 cached states; starts are restricted to stride-4 boundaries. The 0.5 temporal-reversal augmentation calls the upstream coupled frame/keyboard/mouse function, only for no-jump windows. Evaluation never augments.
 
-Official 100M predictor, frozen pretrained encoder, one new `capsaicin` embodiment. Existing predictor tensors load strictly; only the added embodiment entries are new. No unrelated generator checkpoint is used. Zero proprioception is used at both training and inference. Full 100M predictor fine-tuning plus a higher learning rate for the action/state/embodiment interface. Random-initialized predictor control shares data, encoder, schedule and seed.
+Our conservative asset-family split is **not an upstream published benchmark split**. It groups camera/anchor variants into eight families: bistro, gallery, sponza, suntemple, hidden_alley, namaqualand, the_shed, verdant_trail. With seed 42: train 332 clips, validation 20 (sponza), test 88 (namaqualand). Unknown filenames fail rather than silently becoming new scenes.
 
-Each branch: at most 2,000 updates and 6 GPU-hours of training, global batch 8 (microbatch 2 × accumulation 4), 4 context frames plus a 2-step differentiable rollout. Evaluate 1/2/5/10-step latent L1/cosine errors, persistence, zero-action and time-reversed-action controls. These controls measure conditioning sensitivity, not counterfactual simulator correctness. Longer-horizon decoding and RGB generation are outside this first pilot. The random predictor control measures learning under the same small budget, not convergence from scratch.
+## Model and evaluation
 
-## Cluster stages
+Load the official 100M predictor strictly, retaining all old parameters and adding a Capsaicin embodiment. Follow Micro-World's action-stage freezing strategy: freeze the encoder and predictor trunk; update only the new action projection/bias, task embedding and zero-proprioception bias. Gradient masks protect old embodiment rows. Weight decay is zero because the parameters share tables with frozen embodiments; the GPU gate verifies exact old-row/trunk preservation.
 
-1. CPU preparation: locked environment, selective downloads, source sizes, decoded frames and actions, scene split, archives.
-2. Single-GPU gate: strict checkpoint loading, encoder preprocessing, causal prefix, finite gradients, action sensitivity, numerical recovery and throughput.
-3. Four independent single-GPU encoding shards, each transferred back as a persistent archive. No distributed gradient synchronization.
-4. Two independent single-GPU training jobs after successful gate and encoding, with 1800-second exit-85 checkpoint transfers; same W&B run ID across restarts.
+Keep RoboJEPA's MAE latent objective; cosine is diagnostic. The prior extra cosine penalty was removed. Teacher-forced prediction uses overlapping windows of at most 16 states; a two-step differentiable rollout starts from **one observed frame**. Longer rollouts slide a 16-state context; this is an explicit positional-context adaptation, not Micro-World's Wan KV-cache implementation.
 
-Only `latest` and `best` training checkpoints persist. Checkpoints contain model, optimizer, RNG, optimizer step, accumulated training time and deterministic sampler position. Output archive failure overrides exit 85 with a failure code. Failure stops the workflow; there is no blind automatic resubmission.
+Latent preflight reports 1/2/5/10/20-step errors, corresponding to 4/8/20/40/80 source-frame offsets, plus persistence and action sensitivity. These do not establish RGB quality or physical correctness. The eventual video task needs matched generated/reference videos, action-controllability evaluation and the visual/temporal metrics under upstream `test_metrics`. See `evaluation-protocol.json` for the incomplete task contract.
 
-Submit from the repository with `python3 -m cluster.submit prepare`. The bounded controller is `python3 -m cluster.workflow`; `--once` performs one observation/transition. It collects only complete JSON reports, commits/pushes them, and advances through the four stages above. A `STOPPED` marker under the external jobs directory stops future submissions; stopping existing jobs also requires removing their recorded Condor IDs. No secrets or raw stderr are published. It prefers H100/H200; after one continuous idle hour, encoding/training can also use A100 80GB if the passed gate records the runtime's compiled Ampere SDPA support. Blackwell is not enabled by this runtime.
+## Execution
 
-Current results belong under `reports/`. Static tests do not establish GPU correctness; a successful `gate.json` is required before encoding or formal training. Formal W&B starts only in the training worker. Transient W&B connection failure falls back to local logs with the same run ID, returned in the results archive for later sync.
+`python3 -m cluster.submit prepare` submits preparation; `python3 -m cluster.workflow` collects successful reports and advances to the GPU gate. Current `auto_train=false` makes the controller exit after the gate. `formal=false` also rejects direct formal submission. These are implementation-status checks, not a new user-approval requirement.
 
-W&B: https://wandb.ai/yibozhong657-none/robojepa-capsaicin
+GPU validation covers real pretrained tensors, upstream action/reversal parity, causality, action gradients, frozen-weight preservation, an 81-source-frame training window, 20-step rollout and numerical checkpoint recovery. Static checks cannot substitute for this gate. The earlier full-predictor plus random-predictor pilot is not automatically launched.
 
-References: [RoboJEPA](https://github.com/facebookresearch/robo_jepa), [Micro-World data tooling](https://github.com/AMD-AGI/Micro-World), [Capsaicin](https://huggingface.co/datasets/amd/Micro-World-Capsaicin).
+The existing 2,000-step / 6-training-hour ceiling remains unchanged. When the RGB task path is implemented, the shared training/recovery code retains optimizer, RNG, sampler position and run ID; latest/best are separate and archive failure cannot return exit 85. Formal W&B is https://wandb.ai/yibozhong657-none/robojepa-capsaicin; preparation/gates have no W&B run.

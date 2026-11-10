@@ -23,7 +23,8 @@ def evaluate(model,dataset,cfg,limit=None,controls=False):
             record('persistence',features[:,context-1:context].expand_as(target),target)
             if controls:
                 # Preserve context controls, perturb the queried/future commands only.
-                for name in ['zero_actions','reversed_actions']:
+                # A chunk-order perturbation, not the physical temporal-reversal augmentation.
+                for name in ['zero_actions','reordered_action_chunks']:
                     changed=actions.clone()
                     future=changed[:,context-1:]
                     if name=='zero_actions': future.zero_()
