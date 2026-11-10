@@ -57,6 +57,11 @@ def main():
     if cfg['formal'] or not torch.cuda.is_available() or torch.cuda.device_count() != 1:
         raise RuntimeError('This is a one-GPU diagnostic only')
     torch.set_num_threads(4)
+    # Default CUDA backward kernels can differ after an exact state restore.
+    # Keep strict recovery tolerances and select deterministic algorithms instead.
+    torch.use_deterministic_algorithms(cfg['deterministic_algorithms'])
+    torch.backends.cudnn.deterministic = cfg['deterministic_algorithms']
+    torch.backends.cudnn.benchmark = False
     random.seed(cfg['seed']); np.random.seed(cfg['seed']); torch.manual_seed(cfg['seed'])
     out = Path(args.out); out.mkdir(parents=True, exist_ok=True)
     report = {'complete': False, 'formal': False, 'config': cfg, 'source': read_json(ROOT / 'source.json')}

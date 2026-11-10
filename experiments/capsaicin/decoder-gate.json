@@ -1,6 +1,7 @@
 {
   "experiment": "capsaicin-decoder-gate",
   "formal": false,
+  "deterministic_algorithms": true,
   "seed": 42,
   "height": 176,
   "width": 320,
