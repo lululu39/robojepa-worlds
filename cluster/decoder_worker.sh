@@ -20,13 +20,19 @@ export UV_CACHE_DIR="$TASK_ROOT/uv-cache" UV_LINK_MODE=copy
 export UV_PROJECT_ENVIRONMENT="$PWD/.venv"
 if [ -f "$TASK_ROOT/decoder-runtime.tar" ]; then
     tar -xf "$TASK_ROOT/decoder-runtime.tar" .venv
-    uv sync --project experiments/capsaicin/decoder_env --frozen --offline --python /opt/project/.venv/bin/python
+    # This archive was already built from the locked decoder environment.
+    # Re-syncing a relocated archive can require a wheel even when installed.
+    uv pip check --python .venv/bin/python
 else
     tar -xf "$TASK_ROOT/runtime.tar"
     uv sync --project experiments/capsaicin/decoder_env --frozen --python /opt/project/.venv/bin/python
 fi
 export PATH="$PWD/.venv/bin:$PATH" PYTHONPATH="$PWD"
 uv pip freeze --python .venv/bin/python > "$TASK_ROOT/results/environment.txt"
+if [ -f "$TASK_ROOT/decoder-runtime.tar" ]; then
+    diff -u experiments/capsaicin/decoder_env/installed.txt "$TASK_ROOT/results/environment.txt"
+    printf 'DECODER_PREPARED_ENVIRONMENT_VERIFIED\n'
+fi
 if [ -f "$TASK_ROOT/decoder-assets.tar" ]; then
     tar -xf "$TASK_ROOT/decoder-assets.tar" -C "$TASK_ROOT"
     python -m robojepa_worlds.decoder_prepare --out "$TASK_ROOT/assets" --verify-only

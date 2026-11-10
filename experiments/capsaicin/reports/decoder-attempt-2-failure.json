@@ -1,0 +1,19 @@
+{
+  "job_id": "8309754.0",
+  "source": {
+    "commit": "1206ee402700d4da5150e816efa3e4bfa95e71d6",
+    "upstream": {
+      "robo_jepa": "f93106f5f4a451fd526d51778aa8ab7c852eb824",
+      "vjepa2": "204698b45b3712590f06245fbfba32d3be539812",
+      "micro_world": "ad8c653c896a48c19cebb3dd4ccf802b40421c7a",
+      "jepa_wms": "13cf1d9c7e476f53c17714d2e0f1dc239a883ce0"
+    }
+  },
+  "complete": false,
+  "formal": false,
+  "exit_code": 1,
+  "gpu_updates": 0,
+  "failure": "error: Failed to download `decord==0.6.0`\n  cause: Network connectivity is disabled, but the requested data wasn't found in the cache: https://files.pythonhosted.org/packages/11/79/936af42edf90a7bd4e41a6cac89c913d4b47fa48a26b042d5129a9242ee3/decord-0.6.0-py3-none-manylinux2010_x86_64.whl\n\nhint: `decord` (v0.6.0) was included because `robojepa-worlds` (v0.1.0) depends on `decord`",
+  "diagnosis": "uv sync --offline tried to fetch the pinned decord wheel when reusing the relocated environment; installed package inventory from the producer already contains decord==0.6.0. No decoder numerical code ran.",
+  "repair": "Reuse the prepared locked runtime without re-sync; uv pip check plus exact installed-package inventory comparison. Submit-time pyproject/uv.lock equality remains required."
+}
