@@ -57,6 +57,9 @@ def main():
         if a.stage in ['encode','train']:
             gate=read_json(ROOT/'experiments/capsaicin/reports/gate.json')
             if not gate.get('complete'): raise RuntimeError('GPU gate required')
+            changed=command(['git','diff','--name-only',gate['source']['commit'],'--',
+                             'robojepa_worlds','vendor','uv.lock','experiments/capsaicin/pilot.json','cluster/worker.sh'])
+            if changed: raise RuntimeError('Implementation changed since GPU validation: '+changed)
         if a.stage=='train':
             for i in range(4):
                 r=read_json(ROOT/f'experiments/capsaicin/reports/encode-{i}.json')
@@ -83,13 +86,16 @@ def main():
         run_id=None
         if a.stage=='train':
             run_id=uuid.uuid4().hex[:8]; args+=f' {a.initialization} {run_id}'
-            for i in range(4): inputs.append('osdf:///chtc'+str(STAGING/f'features-{i}.tar'))
+            for i in range(4):
+                artifact=STAGING/f'features-{i}.tar'
+                if not artifact.is_file() or not artifact.stat().st_size: raise RuntimeError('Missing feature archive')
+                inputs.append('osdf:///chtc'+str(artifact))
             inputs.append('/home/yzhong239/.netrc')
         lines=['universe = vanilla',f'container_image = {IMAGE}','executable = worker.sh',f'arguments = {args}',
                'should_transfer_files = YES','when_to_transfer_output = ON_EXIT','stream_output = True','stream_error = True',
                'requirements = (HasCHTCStaging == true)','request_cpus = 4',
                'request_memory = '+('64GB' if a.stage=='prepare' else '48GB'),
-               'request_disk = '+('150GB' if a.stage=='prepare' else '100GB'),
+               'request_disk = '+('150GB' if a.stage=='prepare' else '160GB' if a.stage=='train' else '100GB'),
                'transfer_input_files = '+','.join(inputs),'transfer_output_files = '+','.join(outputs),
                'transfer_output_remaps = "'+';'.join(remaps)+'"',
                'log = logs/job.log','output = logs/job.out','error = logs/job.err',
@@ -98,6 +104,7 @@ def main():
         if a.stage!='prepare':
             lines+=['request_gpus = 1','gpus_minimum_memory = 76000M',
                     'require_gpus = regexp("H100|H200",DeviceName) && !regexp("MIG",DeviceName) && (GlobalMemoryMb >= 76000)',
+                    'rank = 100*ifThenElse(regexp("H100|H200",TARGET.GPUs_DeviceName),1.0,0.0) + ifThenElse(regexp("^backfill",TARGET.Name),0.0,1.0)',
                     '+WantGPULab = true','+GPUJobLength = "short"']
         if a.stage=='train':
             lines+=['checkpoint_exit_code = 85','transfer_checkpoint_files = checkpoints.tar,results.tar',

@@ -16,7 +16,7 @@ Split by scene prefix preceding `_aNNN_vNN`, keeping all camera anchors and acti
 
 Official 100M predictor, frozen pretrained encoder, one new `capsaicin` embodiment. Existing predictor tensors load strictly; only the added embodiment entries are new. No unrelated generator checkpoint is used. Zero proprioception is used at both training and inference. Full 100M predictor fine-tuning plus a higher learning rate for the action/state/embodiment interface. Random-initialized predictor control shares data, encoder, schedule and seed.
 
-Each branch: at most 2,000 updates and 6 GPU-hours of training, global batch 8 (microbatch 2 × accumulation 4), 4 context frames plus a 2-step differentiable rollout. Evaluate 1/2/5/10-step latent L1/cosine errors, persistence, and action-shuffled controls. Longer-horizon decoding and RGB generation are outside this first pilot.
+Each branch: at most 2,000 updates and 6 GPU-hours of training, global batch 8 (microbatch 2 × accumulation 4), 4 context frames plus a 2-step differentiable rollout. Evaluate 1/2/5/10-step latent L1/cosine errors, persistence, zero-action and time-reversed-action controls. These controls measure conditioning sensitivity, not counterfactual simulator correctness. Longer-horizon decoding and RGB generation are outside this first pilot. The random predictor control measures learning under the same small budget, not convergence from scratch.
 
 ## Cluster stages
 
@@ -26,6 +26,10 @@ Each branch: at most 2,000 updates and 6 GPU-hours of training, global batch 8 (
 4. Two independent single-GPU training jobs after successful gate and encoding, with 1800-second exit-85 checkpoint transfers; same W&B run ID across restarts.
 
 Only `latest` and `best` training checkpoints persist. Checkpoints contain model, optimizer, RNG, optimizer step, accumulated training time and deterministic sampler position. Output archive failure overrides exit 85 with a failure code. Failure stops the workflow; there is no blind automatic resubmission.
+
+Submit from the repository with `python3 -m cluster.submit prepare`. The bounded controller is `python3 -m cluster.workflow`; `--once` performs one observation/transition. It collects only complete JSON reports, commits/pushes them, and advances through the four stages above. A `STOPPED` marker under the external jobs directory stops future submissions; stopping existing jobs also requires removing their recorded Condor IDs. No secrets or raw stderr are published. It prefers H100/H200; after one continuous idle hour, encoding/training can also use A100 80GB if the passed gate records the runtime's compiled Ampere SDPA support. Blackwell is not enabled by this runtime.
+
+Current results belong under `reports/`. Static tests do not establish GPU correctness; a successful `gate.json` is required before encoding or formal training. Formal W&B starts only in the training worker. Transient W&B connection failure falls back to local logs with the same run ID, returned in the results archive for later sync.
 
 W&B: https://wandb.ai/yibozhong657-none/robojepa-capsaicin
 
