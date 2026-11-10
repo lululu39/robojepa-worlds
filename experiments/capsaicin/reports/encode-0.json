@@ -1,0 +1,22 @@
+{
+  "complete": true,
+  "shard": 0,
+  "shards": 4,
+  "clips": 110,
+  "frames": 5500,
+  "seconds": 113.83472990617156,
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "torch": "2.7.1+cu126",
+  "bytes": 4029359458,
+  "preprocessing": "352x640 center crop -> 176x320 bilinear RGB/ImageNet/T=1; layernorm BF16",
+  "peak_gpu_bytes": 7571430400,
+  "job_id": "8305087.0",
+  "source": {
+    "commit": "f2bcfe6c8276675764bf32f2622e9513f9f59b1c",
+    "upstream": {
+      "robo_jepa": "f93106f5f4a451fd526d51778aa8ab7c852eb824",
+      "vjepa2": "204698b45b3712590f06245fbfba32d3be539812",
+      "micro_world": "ad8c653c896a48c19cebb3dd4ccf802b40421c7a"
+    }
+  }
+}
