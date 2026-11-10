@@ -1,0 +1,3537 @@
+{
+  "repo": "amd/Micro-World-Capsaicin",
+  "revision": "46223cd3b315cf8e409a4914368e2d7627571db9",
+  "files": [
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a000_v00.json",
+      "bytes": 20223
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a000_v01.json",
+      "bytes": 20177
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a000_v02.json",
+      "bytes": 20049
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a000_v03.json",
+      "bytes": 20124
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a001_v00.json",
+      "bytes": 20209
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a001_v01.json",
+      "bytes": 20250
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a001_v02.json",
+      "bytes": 20312
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a001_v03.json",
+      "bytes": 20226
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a002_v00.json",
+      "bytes": 19927
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a002_v01.json",
+      "bytes": 20143
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a002_v02.json",
+      "bytes": 20416
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a002_v03.json",
+      "bytes": 19896
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a003_v00.json",
+      "bytes": 20252
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a003_v01.json",
+      "bytes": 20229
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a003_v02.json",
+      "bytes": 20434
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a003_v03.json",
+      "bytes": 20321
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a004_v00.json",
+      "bytes": 20346
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a004_v01.json",
+      "bytes": 20327
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a004_v02.json",
+      "bytes": 20336
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a004_v03.json",
+      "bytes": 20243
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a005_v00.json",
+      "bytes": 20302
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a005_v01.json",
+      "bytes": 20482
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a005_v02.json",
+      "bytes": 20101
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a005_v03.json",
+      "bytes": 20353
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a006_v00.json",
+      "bytes": 20086
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a006_v01.json",
+      "bytes": 20378
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a006_v02.json",
+      "bytes": 20346
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a006_v03.json",
+      "bytes": 20272
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a007_v00.json",
+      "bytes": 20158
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a007_v01.json",
+      "bytes": 20216
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a007_v02.json",
+      "bytes": 20493
+    },
+    {
+      "path": "200f/metadata-detection/allow_gallery_pitch_allow_a007_v03.json",
+      "bytes": 20033
+    },
+    {
+      "path": "200f/metadata-detection/allow_sponza_obj_pitch_allow_a008_v00.json",
+      "bytes": 20188
+    },
+    {
+      "path": "200f/metadata-detection/allow_sponza_obj_pitch_allow_a008_v01.json",
+      "bytes": 20345
+    },
+    {
+      "path": "200f/metadata-detection/allow_sponza_obj_pitch_allow_a008_v02.json",
+      "bytes": 20362
+    },
+    {
+      "path": "200f/metadata-detection/allow_sponza_obj_pitch_allow_a008_v03.json",
+      "bytes": 20133
+    },
+    {
+      "path": "200f/metadata-detection/allow_sponza_obj_pitch_allow_a009_v00.json",
+      "bytes": 20152
+    },
+    {
+      "path": "200f/metadata-detection/allow_sponza_obj_pitch_allow_a009_v01.json",
+      "bytes": 20459
+    },
+    {
+      "path": "200f/metadata-detection/allow_sponza_obj_pitch_allow_a009_v02.json",
+      "bytes": 20191
+    },
+    {
+      "path": "200f/metadata-detection/allow_sponza_obj_pitch_allow_a009_v03.json",
+      "bytes": 20243
+    },
+    {
+      "path": "200f/metadata-detection/allow_sponza_obj_pitch_allow_a010_v00.json",
+      "bytes": 20183
+    },
+    {
+      "path": "200f/metadata-detection/allow_sponza_obj_pitch_allow_a010_v01.json",
+      "bytes": 20348
+    },
+    {
+      "path": "200f/metadata-detection/allow_sponza_obj_pitch_allow_a010_v02.json",
+      "bytes": 20180
+    },
+    {
+      "path": "200f/metadata-detection/allow_sponza_obj_pitch_allow_a010_v03.json",
+      "bytes": 20251
+    },
+    {
+      "path": "200f/metadata-detection/allow_sponza_obj_pitch_allow_a012_v03.json",
+      "bytes": 20058
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c0_pitch_bistro_t04_a075_v04.json",
+      "bytes": 20380
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c0_pitch_bistro_t05_a076_v05.json",
+      "bytes": 20077
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c0_pitch_bistro_t10_a075_v10.json",
+      "bytes": 20344
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c0_pitch_bistro_t11_a076_v11.json",
+      "bytes": 20143
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c1_pitch_bistro_t00_a000_v00.json",
+      "bytes": 20162
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c1_pitch_bistro_t01_a001_v01.json",
+      "bytes": 20428
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c1_pitch_bistro_t02_a002_v02.json",
+      "bytes": 20099
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c1_pitch_bistro_t03_a003_v03.json",
+      "bytes": 20267
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c1_pitch_bistro_t04_a004_v04.json",
+      "bytes": 20493
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c1_pitch_bistro_t05_a005_v05.json",
+      "bytes": 20441
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c1_pitch_bistro_t06_a063_v06.json",
+      "bytes": 20215
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c1_pitch_bistro_t07_a064_v07.json",
+      "bytes": 20252
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c1_pitch_bistro_t08_a065_v08.json",
+      "bytes": 20145
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c1_pitch_bistro_t09_a000_v09.json",
+      "bytes": 20584
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c1_pitch_bistro_t10_a001_v10.json",
+      "bytes": 20344
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c1_pitch_bistro_t11_a002_v11.json",
+      "bytes": 20392
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c2_pitch_bistro_t00_a006_v00.json",
+      "bytes": 20276
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c2_pitch_bistro_t01_a007_v01.json",
+      "bytes": 20383
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c2_pitch_bistro_t02_a008_v02.json",
+      "bytes": 20263
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c2_pitch_bistro_t03_a009_v03.json",
+      "bytes": 20312
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c2_pitch_bistro_t04_a010_v04.json",
+      "bytes": 20391
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c2_pitch_bistro_t05_a011_v05.json",
+      "bytes": 20391
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c2_pitch_bistro_t06_a066_v06.json",
+      "bytes": 20519
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c2_pitch_bistro_t07_a067_v07.json",
+      "bytes": 20278
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c2_pitch_bistro_t08_a068_v08.json",
+      "bytes": 20302
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c2_pitch_bistro_t09_a069_v09.json",
+      "bytes": 20454
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c2_pitch_bistro_t10_a006_v10.json",
+      "bytes": 20151
+    },
+    {
+      "path": "200f/metadata-detection/be_r0c2_pitch_bistro_t11_a007_v11.json",
+      "bytes": 20212
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c0_pitch_bistro_t00_a012_v00.json",
+      "bytes": 20164
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c0_pitch_bistro_t01_a013_v01.json",
+      "bytes": 20381
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c0_pitch_bistro_t02_a014_v02.json",
+      "bytes": 20467
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c0_pitch_bistro_t03_a015_v03.json",
+      "bytes": 20342
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c0_pitch_bistro_t04_a016_v04.json",
+      "bytes": 20306
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c0_pitch_bistro_t05_a017_v05.json",
+      "bytes": 20160
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c0_pitch_bistro_t06_a070_v06.json",
+      "bytes": 20447
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c0_pitch_bistro_t07_a071_v07.json",
+      "bytes": 20249
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c0_pitch_bistro_t08_a072_v08.json",
+      "bytes": 20176
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c0_pitch_bistro_t09_a073_v09.json",
+      "bytes": 20428
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c0_pitch_bistro_t10_a012_v10.json",
+      "bytes": 20248
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c0_pitch_bistro_t11_a013_v11.json",
+      "bytes": 20227
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c1_pitch_bistro_t00_a018_v00.json",
+      "bytes": 20334
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c1_pitch_bistro_t01_a019_v01.json",
+      "bytes": 20371
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c1_pitch_bistro_t02_a020_v02.json",
+      "bytes": 20195
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c1_pitch_bistro_t03_a018_v03.json",
+      "bytes": 20236
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c1_pitch_bistro_t04_a019_v04.json",
+      "bytes": 20291
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c1_pitch_bistro_t05_a020_v05.json",
+      "bytes": 20409
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c1_pitch_bistro_t06_a018_v06.json",
+      "bytes": 20300
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c1_pitch_bistro_t07_a019_v07.json",
+      "bytes": 20567
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c1_pitch_bistro_t08_a020_v08.json",
+      "bytes": 20182
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c1_pitch_bistro_t09_a018_v09.json",
+      "bytes": 20335
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c1_pitch_bistro_t10_a019_v10.json",
+      "bytes": 20152
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c1_pitch_bistro_t11_a020_v11.json",
+      "bytes": 20118
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c2_pitch_bistro_t00_a084_v00.json",
+      "bytes": 20217
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c2_pitch_bistro_t01_a085_v01.json",
+      "bytes": 20504
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c2_pitch_bistro_t02_a086_v02.json",
+      "bytes": 20196
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c2_pitch_bistro_t03_a087_v03.json",
+      "bytes": 20345
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c2_pitch_bistro_t04_a088_v04.json",
+      "bytes": 20226
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c2_pitch_bistro_t05_a089_v05.json",
+      "bytes": 20325
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c2_pitch_bistro_t06_a084_v06.json",
+      "bytes": 20434
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c2_pitch_bistro_t07_a085_v07.json",
+      "bytes": 20490
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c2_pitch_bistro_t09_a087_v09.json",
+      "bytes": 20294
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c2_pitch_bistro_t10_a088_v10.json",
+      "bytes": 20252
+    },
+    {
+      "path": "200f/metadata-detection/be_r1c2_pitch_bistro_t11_a089_v11.json",
+      "bytes": 20165
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c0_pitch_bistro_t00_a021_v00.json",
+      "bytes": 20250
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c0_pitch_bistro_t01_a022_v01.json",
+      "bytes": 20332
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c0_pitch_bistro_t02_a023_v02.json",
+      "bytes": 20361
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c0_pitch_bistro_t03_a024_v03.json",
+      "bytes": 20410
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c0_pitch_bistro_t04_a021_v04.json",
+      "bytes": 20320
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c0_pitch_bistro_t05_a022_v05.json",
+      "bytes": 20202
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c0_pitch_bistro_t06_a023_v06.json",
+      "bytes": 20490
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c0_pitch_bistro_t07_a024_v07.json",
+      "bytes": 20429
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c0_pitch_bistro_t08_a021_v08.json",
+      "bytes": 20166
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c0_pitch_bistro_t09_a022_v09.json",
+      "bytes": 20267
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c0_pitch_bistro_t10_a023_v10.json",
+      "bytes": 20162
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c0_pitch_bistro_t11_a024_v11.json",
+      "bytes": 20319
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c1_pitch_bistro_t00_a025_v00.json",
+      "bytes": 20193
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c1_pitch_bistro_t01_a026_v01.json",
+      "bytes": 20348
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c1_pitch_bistro_t02_a027_v02.json",
+      "bytes": 20152
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c1_pitch_bistro_t03_a028_v03.json",
+      "bytes": 20271
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c1_pitch_bistro_t04_a025_v04.json",
+      "bytes": 20376
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c1_pitch_bistro_t05_a026_v05.json",
+      "bytes": 20324
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c1_pitch_bistro_t06_a027_v06.json",
+      "bytes": 20436
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c1_pitch_bistro_t07_a028_v07.json",
+      "bytes": 20302
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c1_pitch_bistro_t08_a025_v08.json",
+      "bytes": 20362
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c1_pitch_bistro_t09_a026_v09.json",
+      "bytes": 20301
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c1_pitch_bistro_t10_a027_v10.json",
+      "bytes": 20172
+    },
+    {
+      "path": "200f/metadata-detection/bi_r0c1_pitch_bistro_t11_a028_v11.json",
+      "bytes": 20265
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c0_pitch_bistro_t00_a029_v00.json",
+      "bytes": 20219
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c0_pitch_bistro_t01_a030_v01.json",
+      "bytes": 20563
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c0_pitch_bistro_t02_a031_v02.json",
+      "bytes": 20362
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c0_pitch_bistro_t03_a032_v03.json",
+      "bytes": 20179
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c0_pitch_bistro_t04_a029_v04.json",
+      "bytes": 20546
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c0_pitch_bistro_t05_a030_v05.json",
+      "bytes": 20286
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c0_pitch_bistro_t06_a031_v06.json",
+      "bytes": 20471
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c0_pitch_bistro_t07_a032_v07.json",
+      "bytes": 20438
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c0_pitch_bistro_t08_a029_v08.json",
+      "bytes": 20322
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c0_pitch_bistro_t09_a030_v09.json",
+      "bytes": 20370
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c0_pitch_bistro_t10_a031_v10.json",
+      "bytes": 20227
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c0_pitch_bistro_t11_a032_v11.json",
+      "bytes": 20421
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c1_pitch_bistro_t01_a034_v01.json",
+      "bytes": 20306
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c1_pitch_bistro_t05_a034_v05.json",
+      "bytes": 20280
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c1_pitch_bistro_t06_a035_v06.json",
+      "bytes": 20413
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c1_pitch_bistro_t09_a034_v09.json",
+      "bytes": 20351
+    },
+    {
+      "path": "200f/metadata-detection/bi_r1c1_pitch_bistro_t10_a035_v10.json",
+      "bytes": 20381
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c0_pitch_bistro_t00_a037_v00.json",
+      "bytes": 20119
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c0_pitch_bistro_t01_a038_v01.json",
+      "bytes": 20533
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c0_pitch_bistro_t02_a039_v02.json",
+      "bytes": 20375
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c0_pitch_bistro_t03_a040_v03.json",
+      "bytes": 20342
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c0_pitch_bistro_t04_a041_v04.json",
+      "bytes": 20356
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c0_pitch_bistro_t05_a042_v05.json",
+      "bytes": 20354
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c0_pitch_bistro_t06_a077_v06.json",
+      "bytes": 20415
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c0_pitch_bistro_t07_a037_v07.json",
+      "bytes": 20252
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c0_pitch_bistro_t08_a038_v08.json",
+      "bytes": 20267
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c0_pitch_bistro_t09_a039_v09.json",
+      "bytes": 20332
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c0_pitch_bistro_t10_a040_v10.json",
+      "bytes": 20164
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c0_pitch_bistro_t11_a041_v11.json",
+      "bytes": 20153
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c1_pitch_bistro_t00_a043_v00.json",
+      "bytes": 20288
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c1_pitch_bistro_t01_a044_v01.json",
+      "bytes": 20331
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c1_pitch_bistro_t02_a045_v02.json",
+      "bytes": 20333
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c1_pitch_bistro_t03_a046_v03.json",
+      "bytes": 20070
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c1_pitch_bistro_t04_a047_v04.json",
+      "bytes": 20390
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c1_pitch_bistro_t06_a043_v06.json",
+      "bytes": 20442
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c1_pitch_bistro_t07_a044_v07.json",
+      "bytes": 20404
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c1_pitch_bistro_t09_a046_v09.json",
+      "bytes": 20310
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c1_pitch_bistro_t10_a047_v10.json",
+      "bytes": 20352
+    },
+    {
+      "path": "200f/metadata-detection/bw_r0c1_pitch_bistro_t11_a048_v11.json",
+      "bytes": 20085
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c0_pitch_bistro_t00_a049_v00.json",
+      "bytes": 20264
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c0_pitch_bistro_t01_a050_v01.json",
+      "bytes": 20316
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c0_pitch_bistro_t02_a051_v02.json",
+      "bytes": 20245
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c0_pitch_bistro_t03_a052_v03.json",
+      "bytes": 20432
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c0_pitch_bistro_t04_a053_v04.json",
+      "bytes": 20489
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c0_pitch_bistro_t05_a078_v05.json",
+      "bytes": 20474
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c0_pitch_bistro_t07_a080_v07.json",
+      "bytes": 20495
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c0_pitch_bistro_t08_a049_v08.json",
+      "bytes": 20182
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c0_pitch_bistro_t09_a050_v09.json",
+      "bytes": 20143
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c0_pitch_bistro_t10_a051_v10.json",
+      "bytes": 20302
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c0_pitch_bistro_t11_a052_v11.json",
+      "bytes": 20076
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c1_pitch_bistro_t00_a054_v00.json",
+      "bytes": 20251
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c1_pitch_bistro_t01_a055_v01.json",
+      "bytes": 20476
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c1_pitch_bistro_t06_a081_v06.json",
+      "bytes": 20310
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c1_pitch_bistro_t07_a082_v07.json",
+      "bytes": 20265
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c1_pitch_bistro_t09_a054_v09.json",
+      "bytes": 20492
+    },
+    {
+      "path": "200f/metadata-detection/bw_r1c1_pitch_bistro_t10_a055_v10.json",
+      "bytes": 20399
+    },
+    {
+      "path": "200f/metadata-detection/cap_br_pitch_builtin_c01_cameramain_v00.json",
+      "bytes": 20282
+    },
+    {
+      "path": "200f/metadata-detection/cap_br_pitch_builtin_c01_cameramain_v01.json",
+      "bytes": 20249
+    },
+    {
+      "path": "200f/metadata-detection/cap_br_pitch_builtin_c01_cameramain_v02.json",
+      "bytes": 20306
+    },
+    {
+      "path": "200f/metadata-detection/cap_br_pitch_builtin_c01_cameramain_v03.json",
+      "bytes": 20273
+    },
+    {
+      "path": "200f/metadata-detection/cap_br_pitch_builtin_c02_cameratabletop_v00.json",
+      "bytes": 20493
+    },
+    {
+      "path": "200f/metadata-detection/cap_br_pitch_builtin_c02_cameratabletop_v01.json",
+      "bytes": 20313
+    },
+    {
+      "path": "200f/metadata-detection/cap_br_pitch_builtin_c02_cameratabletop_v02.json",
+      "bytes": 20502
+    },
+    {
+      "path": "200f/metadata-detection/cap_br_pitch_builtin_c02_cameratabletop_v03.json",
+      "bytes": 20509
+    },
+    {
+      "path": "200f/metadata-detection/cap_br_pitch_builtin_c03_cameratopdown_v00.json",
+      "bytes": 20321
+    },
+    {
+      "path": "200f/metadata-detection/cap_br_pitch_builtin_c03_cameratopdown_v01.json",
+      "bytes": 20496
+    },
+    {
+      "path": "200f/metadata-detection/cap_br_pitch_builtin_c03_cameratopdown_v02.json",
+      "bytes": 20402
+    },
+    {
+      "path": "200f/metadata-detection/cap_br_pitch_builtin_c03_cameratopdown_v03.json",
+      "bytes": 20572
+    },
+    {
+      "path": "200f/metadata-detection/cap_sp_pitch_sponza_c01_cameramain_v00.json",
+      "bytes": 20422
+    },
+    {
+      "path": "200f/metadata-detection/cap_sp_pitch_sponza_c01_cameramain_v03.json",
+      "bytes": 20405
+    },
+    {
+      "path": "200f/metadata-detection/cap_sp_pitch_sponza_c02_cameraalternate_v00.json",
+      "bytes": 20418
+    },
+    {
+      "path": "200f/metadata-detection/cap_sp_pitch_sponza_c02_cameraalternate_v01.json",
+      "bytes": 20339
+    },
+    {
+      "path": "200f/metadata-detection/cap_sp_pitch_sponza_c02_cameraalternate_v03.json",
+      "bytes": 20264
+    },
+    {
+      "path": "200f/metadata-detection/cap_sp_pitch_sponza_c03_camerabalcony_v00.json",
+      "bytes": 20426
+    },
+    {
+      "path": "200f/metadata-detection/cap_sp_pitch_sponza_c03_camerabalcony_v02.json",
+      "bytes": 20235
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_162_hidden_alley.json",
+      "bytes": 20176
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_163_hidden_alley.json",
+      "bytes": 20308
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_164_hidden_alley.json",
+      "bytes": 20169
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_165_hidden_alley.json",
+      "bytes": 20474
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_166_hidden_alley.json",
+      "bytes": 20307
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_167_hidden_alley.json",
+      "bytes": 20085
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_169_hidden_alley.json",
+      "bytes": 20025
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_170_hidden_alley.json",
+      "bytes": 20217
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_171_hidden_alley.json",
+      "bytes": 19942
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_172_namaqualand.json",
+      "bytes": 20083
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_173_namaqualand.json",
+      "bytes": 20241
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_174_namaqualand.json",
+      "bytes": 20259
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_175_namaqualand.json",
+      "bytes": 20077
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_176_namaqualand.json",
+      "bytes": 20018
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_177_namaqualand.json",
+      "bytes": 20278
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_178_namaqualand.json",
+      "bytes": 20133
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_179_namaqualand.json",
+      "bytes": 20077
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_180_namaqualand.json",
+      "bytes": 20118
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_181_namaqualand.json",
+      "bytes": 20177
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_182_namaqualand.json",
+      "bytes": 20177
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_183_namaqualand.json",
+      "bytes": 20432
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_184_namaqualand.json",
+      "bytes": 20480
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_185_namaqualand.json",
+      "bytes": 20337
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_186_namaqualand.json",
+      "bytes": 20065
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_187_namaqualand.json",
+      "bytes": 19990
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_188_namaqualand.json",
+      "bytes": 20338
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_189_namaqualand.json",
+      "bytes": 20110
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_190_namaqualand.json",
+      "bytes": 20046
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_191_namaqualand.json",
+      "bytes": 20084
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_192_namaqualand.json",
+      "bytes": 20101
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_193_namaqualand.json",
+      "bytes": 20316
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_194_namaqualand.json",
+      "bytes": 20090
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_196_the_shed.json",
+      "bytes": 20444
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_197_the_shed.json",
+      "bytes": 20387
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_198_the_shed.json",
+      "bytes": 20254
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_199_the_shed.json",
+      "bytes": 20303
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_200_the_shed.json",
+      "bytes": 20130
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_201_the_shed.json",
+      "bytes": 20204
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_202_the_shed.json",
+      "bytes": 20262
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_203_the_shed.json",
+      "bytes": 20102
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_204_the_shed.json",
+      "bytes": 20330
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_205_the_shed.json",
+      "bytes": 20151
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_206_the_shed.json",
+      "bytes": 19981
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_207_the_shed.json",
+      "bytes": 20158
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_208_the_shed.json",
+      "bytes": 20321
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_209_the_shed.json",
+      "bytes": 20158
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_210_the_shed.json",
+      "bytes": 20228
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_211_the_shed.json",
+      "bytes": 20121
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_212_the_shed.json",
+      "bytes": 20086
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_213_the_shed.json",
+      "bytes": 20124
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_214_the_shed.json",
+      "bytes": 20175
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_215_verdant_trail.json",
+      "bytes": 20200
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_216_verdant_trail.json",
+      "bytes": 20034
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_217_verdant_trail.json",
+      "bytes": 20115
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_218_verdant_trail.json",
+      "bytes": 20309
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_demo_219_verdant_trail.json",
+      "bytes": 20236
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_000_hidden_alley.json",
+      "bytes": 20106
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_001_hidden_alley.json",
+      "bytes": 19996
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_002_hidden_alley.json",
+      "bytes": 20205
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_003_hidden_alley.json",
+      "bytes": 20012
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_004_hidden_alley.json",
+      "bytes": 20121
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_005_hidden_alley.json",
+      "bytes": 19852
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_006_hidden_alley.json",
+      "bytes": 20169
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_007_hidden_alley.json",
+      "bytes": 20025
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_008_hidden_alley.json",
+      "bytes": 20261
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_009_hidden_alley.json",
+      "bytes": 20273
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_010_hidden_alley.json",
+      "bytes": 20235
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_011_hidden_alley.json",
+      "bytes": 20140
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_012_hidden_alley.json",
+      "bytes": 20047
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_013_hidden_alley.json",
+      "bytes": 20194
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_014_hidden_alley.json",
+      "bytes": 20342
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_015_hidden_alley.json",
+      "bytes": 20348
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_016_hidden_alley.json",
+      "bytes": 20165
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_017_hidden_alley.json",
+      "bytes": 20239
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_018_hidden_alley.json",
+      "bytes": 20443
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_019_hidden_alley.json",
+      "bytes": 19917
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_020_hidden_alley.json",
+      "bytes": 20264
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_021_hidden_alley.json",
+      "bytes": 19998
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_022_hidden_alley.json",
+      "bytes": 20209
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_023_hidden_alley.json",
+      "bytes": 20085
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_024_hidden_alley.json",
+      "bytes": 20416
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_025_hidden_alley.json",
+      "bytes": 20075
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_026_hidden_alley.json",
+      "bytes": 20428
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_027_hidden_alley.json",
+      "bytes": 20140
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_028_hidden_alley.json",
+      "bytes": 20185
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_029_hidden_alley.json",
+      "bytes": 20269
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_030_hidden_alley.json",
+      "bytes": 20265
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_031_hidden_alley.json",
+      "bytes": 20206
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_032_hidden_alley.json",
+      "bytes": 20117
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_033_namaqualand.json",
+      "bytes": 20166
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_034_namaqualand.json",
+      "bytes": 20267
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_035_namaqualand.json",
+      "bytes": 20019
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_036_namaqualand.json",
+      "bytes": 20385
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_037_namaqualand.json",
+      "bytes": 19934
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_038_namaqualand.json",
+      "bytes": 20104
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_039_namaqualand.json",
+      "bytes": 19972
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_040_namaqualand.json",
+      "bytes": 20320
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_041_namaqualand.json",
+      "bytes": 20405
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_042_namaqualand.json",
+      "bytes": 20180
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_043_namaqualand.json",
+      "bytes": 20079
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_044_namaqualand.json",
+      "bytes": 20096
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_045_namaqualand.json",
+      "bytes": 20372
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_046_namaqualand.json",
+      "bytes": 20232
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_047_namaqualand.json",
+      "bytes": 20288
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_048_namaqualand.json",
+      "bytes": 20082
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_049_namaqualand.json",
+      "bytes": 20136
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_050_namaqualand.json",
+      "bytes": 19862
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_051_namaqualand.json",
+      "bytes": 20208
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_052_namaqualand.json",
+      "bytes": 20373
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_053_namaqualand.json",
+      "bytes": 20221
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_054_namaqualand.json",
+      "bytes": 20171
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_055_namaqualand.json",
+      "bytes": 20287
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_056_namaqualand.json",
+      "bytes": 20153
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_057_namaqualand.json",
+      "bytes": 20223
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_058_namaqualand.json",
+      "bytes": 20212
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_059_namaqualand.json",
+      "bytes": 20055
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_060_namaqualand.json",
+      "bytes": 20131
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_061_namaqualand.json",
+      "bytes": 20400
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_062_namaqualand.json",
+      "bytes": 20350
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_064_namaqualand.json",
+      "bytes": 20317
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_069_namaqualand.json",
+      "bytes": 20348
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_070_namaqualand.json",
+      "bytes": 20332
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_071_namaqualand.json",
+      "bytes": 20194
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_072_namaqualand.json",
+      "bytes": 20261
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_073_namaqualand.json",
+      "bytes": 20136
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_074_namaqualand.json",
+      "bytes": 20258
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_075_namaqualand.json",
+      "bytes": 20285
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_076_namaqualand.json",
+      "bytes": 20136
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_077_namaqualand.json",
+      "bytes": 20087
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_078_namaqualand.json",
+      "bytes": 20136
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_079_namaqualand.json",
+      "bytes": 20176
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_080_namaqualand.json",
+      "bytes": 20198
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_081_namaqualand.json",
+      "bytes": 20285
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_082_namaqualand.json",
+      "bytes": 20157
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_083_namaqualand.json",
+      "bytes": 20105
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_084_namaqualand.json",
+      "bytes": 20134
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_085_namaqualand.json",
+      "bytes": 20271
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_086_namaqualand.json",
+      "bytes": 20120
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_087_namaqualand.json",
+      "bytes": 20083
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_088_namaqualand.json",
+      "bytes": 20181
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_089_namaqualand.json",
+      "bytes": 20342
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_090_namaqualand.json",
+      "bytes": 20185
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_091_namaqualand.json",
+      "bytes": 20332
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_092_namaqualand.json",
+      "bytes": 19914
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_093_namaqualand.json",
+      "bytes": 20101
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_094_namaqualand.json",
+      "bytes": 20173
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_095_namaqualand.json",
+      "bytes": 20305
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_096_namaqualand.json",
+      "bytes": 20153
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_097_namaqualand.json",
+      "bytes": 20258
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_098_namaqualand.json",
+      "bytes": 20068
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_099_namaqualand.json",
+      "bytes": 20136
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_100_namaqualand.json",
+      "bytes": 20321
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_101_namaqualand.json",
+      "bytes": 20205
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_104_namaqualand.json",
+      "bytes": 20049
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_105_the_shed.json",
+      "bytes": 20067
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_106_the_shed.json",
+      "bytes": 20380
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_107_the_shed.json",
+      "bytes": 20389
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_108_the_shed.json",
+      "bytes": 20050
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_109_the_shed.json",
+      "bytes": 20249
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_110_the_shed.json",
+      "bytes": 20221
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_111_the_shed.json",
+      "bytes": 20000
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_112_the_shed.json",
+      "bytes": 20139
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_113_the_shed.json",
+      "bytes": 20243
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_114_the_shed.json",
+      "bytes": 20065
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_115_the_shed.json",
+      "bytes": 20064
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_116_the_shed.json",
+      "bytes": 20318
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_117_the_shed.json",
+      "bytes": 20137
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_118_the_shed.json",
+      "bytes": 20224
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_119_the_shed.json",
+      "bytes": 20258
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_120_the_shed.json",
+      "bytes": 20185
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_121_the_shed.json",
+      "bytes": 20069
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_122_the_shed.json",
+      "bytes": 20433
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_125_the_shed.json",
+      "bytes": 20389
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_129_the_shed.json",
+      "bytes": 20371
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_130_the_shed.json",
+      "bytes": 20347
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_132_the_shed.json",
+      "bytes": 20076
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_134_the_shed.json",
+      "bytes": 20233
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_135_the_shed.json",
+      "bytes": 20145
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_136_the_shed.json",
+      "bytes": 20262
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_137_the_shed.json",
+      "bytes": 20218
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_138_the_shed.json",
+      "bytes": 20385
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_139_the_shed.json",
+      "bytes": 19930
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_140_the_shed.json",
+      "bytes": 20182
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_143_the_shed.json",
+      "bytes": 20225
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_144_the_shed.json",
+      "bytes": 20082
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_145_the_shed.json",
+      "bytes": 20255
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_146_the_shed.json",
+      "bytes": 20073
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_147_the_shed.json",
+      "bytes": 20150
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_149_the_shed.json",
+      "bytes": 20056
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_150_the_shed.json",
+      "bytes": 20283
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_151_the_shed.json",
+      "bytes": 20173
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_152_the_shed.json",
+      "bytes": 20173
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_153_the_shed.json",
+      "bytes": 20053
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_154_the_shed.json",
+      "bytes": 20034
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_155_the_shed.json",
+      "bytes": 20279
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_156_the_shed.json",
+      "bytes": 20143
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_157_the_shed.json",
+      "bytes": 20243
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_158_the_shed.json",
+      "bytes": 20125
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_159_the_shed.json",
+      "bytes": 20071
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_160_the_shed.json",
+      "bytes": 20247
+    },
+    {
+      "path": "200f/metadata-detection/polyamp_bistro_selected3x_161_the_shed.json",
+      "bytes": 20145
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_lower_2_000_a00_v00.json",
+      "bytes": 20197
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_lower_2_000_a00_v01.json",
+      "bytes": 20301
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_lower_2_001_a01_v00.json",
+      "bytes": 20293
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_lower_2_001_a01_v01.json",
+      "bytes": 20117
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_lower_4_002_a02_v00.json",
+      "bytes": 20297
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_lower_4_002_a02_v01.json",
+      "bytes": 20209
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_lower_4_003_a03_v00.json",
+      "bytes": 20278
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_lower_4_003_a03_v01.json",
+      "bytes": 20167
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_lower_4_004_a04_v00.json",
+      "bytes": 20142
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_lower_4_004_a04_v01.json",
+      "bytes": 20117
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_lower_4_005_a05_v00.json",
+      "bytes": 19878
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_lower_4_005_a05_v01.json",
+      "bytes": 20159
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_round_40_012_a12_v00.json",
+      "bytes": 20257
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_round_40_012_a12_v01.json",
+      "bytes": 20415
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_round_40_013_a13_v00.json",
+      "bytes": 20330
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_round_40_013_a13_v01.json",
+      "bytes": 20106
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_round_40_014_a14_v00.json",
+      "bytes": 19971
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_round_40_014_a14_v01.json",
+      "bytes": 20293
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_round_40_015_a15_v00.json",
+      "bytes": 20247
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_round_40_015_a15_v01.json",
+      "bytes": 20117
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_stairtop_2_008_a08_v00.json",
+      "bytes": 19875
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_stairtop_2_008_a08_v01.json",
+      "bytes": 20282
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_stairtop_3_011_a11_v00.json",
+      "bytes": 20050
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_stairtop_3_011_a11_v01.json",
+      "bytes": 20039
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_stairtop_43_009_a09_v00.json",
+      "bytes": 20154
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_stairtop_43_009_a09_v01.json",
+      "bytes": 20005
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_stairtop_43_010_a10_v00.json",
+      "bytes": 20040
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_floor_stairtop_43_010_a10_v01.json",
+      "bytes": 20181
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_stairs_270_006_a06_v00.json",
+      "bytes": 20106
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_stairs_270_006_a06_v01.json",
+      "bytes": 20374
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_stairs_3_007_a07_v00.json",
+      "bytes": 20233
+    },
+    {
+      "path": "200f/metadata-detection/suntemple_v2_sm_stairs_3_007_a07_v01.json",
+      "bytes": 20198
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a000_v00.mp4",
+      "bytes": 2075470
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a000_v01.mp4",
+      "bytes": 2161429
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a000_v02.mp4",
+      "bytes": 1975298
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a000_v03.mp4",
+      "bytes": 2345794
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a001_v00.mp4",
+      "bytes": 1953957
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a001_v01.mp4",
+      "bytes": 2204949
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a001_v02.mp4",
+      "bytes": 2094877
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a001_v03.mp4",
+      "bytes": 1833914
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a002_v00.mp4",
+      "bytes": 1846811
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a002_v01.mp4",
+      "bytes": 1364410
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a002_v02.mp4",
+      "bytes": 2073986
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a002_v03.mp4",
+      "bytes": 1845711
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a003_v00.mp4",
+      "bytes": 2102869
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a003_v01.mp4",
+      "bytes": 1533011
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a003_v02.mp4",
+      "bytes": 2354472
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a003_v03.mp4",
+      "bytes": 2192360
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a004_v00.mp4",
+      "bytes": 1295484
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a004_v01.mp4",
+      "bytes": 1769921
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a004_v02.mp4",
+      "bytes": 1715066
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a004_v03.mp4",
+      "bytes": 1434489
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a005_v00.mp4",
+      "bytes": 2041771
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a005_v01.mp4",
+      "bytes": 1976718
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a005_v02.mp4",
+      "bytes": 1864552
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a005_v03.mp4",
+      "bytes": 2110374
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a006_v00.mp4",
+      "bytes": 1625403
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a006_v01.mp4",
+      "bytes": 1843894
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a006_v02.mp4",
+      "bytes": 2129682
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a006_v03.mp4",
+      "bytes": 2116655
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a007_v00.mp4",
+      "bytes": 2054452
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a007_v01.mp4",
+      "bytes": 2068202
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a007_v02.mp4",
+      "bytes": 1362797
+    },
+    {
+      "path": "200f/video/allow_gallery_pitch_allow_a007_v03.mp4",
+      "bytes": 2242682
+    },
+    {
+      "path": "200f/video/allow_sponza_obj_pitch_allow_a008_v00.mp4",
+      "bytes": 1364120
+    },
+    {
+      "path": "200f/video/allow_sponza_obj_pitch_allow_a008_v01.mp4",
+      "bytes": 1079127
+    },
+    {
+      "path": "200f/video/allow_sponza_obj_pitch_allow_a008_v02.mp4",
+      "bytes": 1999798
+    },
+    {
+      "path": "200f/video/allow_sponza_obj_pitch_allow_a008_v03.mp4",
+      "bytes": 1704767
+    },
+    {
+      "path": "200f/video/allow_sponza_obj_pitch_allow_a009_v00.mp4",
+      "bytes": 2309314
+    },
+    {
+      "path": "200f/video/allow_sponza_obj_pitch_allow_a009_v01.mp4",
+      "bytes": 2449160
+    },
+    {
+      "path": "200f/video/allow_sponza_obj_pitch_allow_a009_v02.mp4",
+      "bytes": 2881722
+    },
+    {
+      "path": "200f/video/allow_sponza_obj_pitch_allow_a009_v03.mp4",
+      "bytes": 2507173
+    },
+    {
+      "path": "200f/video/allow_sponza_obj_pitch_allow_a010_v00.mp4",
+      "bytes": 2227306
+    },
+    {
+      "path": "200f/video/allow_sponza_obj_pitch_allow_a010_v01.mp4",
+      "bytes": 2398691
+    },
+    {
+      "path": "200f/video/allow_sponza_obj_pitch_allow_a010_v02.mp4",
+      "bytes": 1932752
+    },
+    {
+      "path": "200f/video/allow_sponza_obj_pitch_allow_a010_v03.mp4",
+      "bytes": 2092539
+    },
+    {
+      "path": "200f/video/allow_sponza_obj_pitch_allow_a012_v03.mp4",
+      "bytes": 1361225
+    },
+    {
+      "path": "200f/video/be_r0c0_pitch_bistro_t04_a075_v04.mp4",
+      "bytes": 1954333
+    },
+    {
+      "path": "200f/video/be_r0c0_pitch_bistro_t05_a076_v05.mp4",
+      "bytes": 2428222
+    },
+    {
+      "path": "200f/video/be_r0c0_pitch_bistro_t10_a075_v10.mp4",
+      "bytes": 2564167
+    },
+    {
+      "path": "200f/video/be_r0c0_pitch_bistro_t11_a076_v11.mp4",
+      "bytes": 2354458
+    },
+    {
+      "path": "200f/video/be_r0c1_pitch_bistro_t00_a000_v00.mp4",
+      "bytes": 2191763
+    },
+    {
+      "path": "200f/video/be_r0c1_pitch_bistro_t01_a001_v01.mp4",
+      "bytes": 2892843
+    },
+    {
+      "path": "200f/video/be_r0c1_pitch_bistro_t02_a002_v02.mp4",
+      "bytes": 1447207
+    },
+    {
+      "path": "200f/video/be_r0c1_pitch_bistro_t03_a003_v03.mp4",
+      "bytes": 2759040
+    },
+    {
+      "path": "200f/video/be_r0c1_pitch_bistro_t04_a004_v04.mp4",
+      "bytes": 2560886
+    },
+    {
+      "path": "200f/video/be_r0c1_pitch_bistro_t05_a005_v05.mp4",
+      "bytes": 2564605
+    },
+    {
+      "path": "200f/video/be_r0c1_pitch_bistro_t06_a063_v06.mp4",
+      "bytes": 2500564
+    },
+    {
+      "path": "200f/video/be_r0c1_pitch_bistro_t07_a064_v07.mp4",
+      "bytes": 1566628
+    },
+    {
+      "path": "200f/video/be_r0c1_pitch_bistro_t08_a065_v08.mp4",
+      "bytes": 2569437
+    },
+    {
+      "path": "200f/video/be_r0c1_pitch_bistro_t09_a000_v09.mp4",
+      "bytes": 1712371
+    },
+    {
+      "path": "200f/video/be_r0c1_pitch_bistro_t10_a001_v10.mp4",
+      "bytes": 2546834
+    },
+    {
+      "path": "200f/video/be_r0c1_pitch_bistro_t11_a002_v11.mp4",
+      "bytes": 1044479
+    },
+    {
+      "path": "200f/video/be_r0c2_pitch_bistro_t00_a006_v00.mp4",
+      "bytes": 2903852
+    },
+    {
+      "path": "200f/video/be_r0c2_pitch_bistro_t01_a007_v01.mp4",
+      "bytes": 2014462
+    },
+    {
+      "path": "200f/video/be_r0c2_pitch_bistro_t02_a008_v02.mp4",
+      "bytes": 2023418
+    },
+    {
+      "path": "200f/video/be_r0c2_pitch_bistro_t03_a009_v03.mp4",
+      "bytes": 4017336
+    },
+    {
+      "path": "200f/video/be_r0c2_pitch_bistro_t04_a010_v04.mp4",
+      "bytes": 1822052
+    },
+    {
+      "path": "200f/video/be_r0c2_pitch_bistro_t05_a011_v05.mp4",
+      "bytes": 3142731
+    },
+    {
+      "path": "200f/video/be_r0c2_pitch_bistro_t06_a066_v06.mp4",
+      "bytes": 1877697
+    },
+    {
+      "path": "200f/video/be_r0c2_pitch_bistro_t07_a067_v07.mp4",
+      "bytes": 2266619
+    },
+    {
+      "path": "200f/video/be_r0c2_pitch_bistro_t08_a068_v08.mp4",
+      "bytes": 1714579
+    },
+    {
+      "path": "200f/video/be_r0c2_pitch_bistro_t09_a069_v09.mp4",
+      "bytes": 2047534
+    },
+    {
+      "path": "200f/video/be_r0c2_pitch_bistro_t10_a006_v10.mp4",
+      "bytes": 2283643
+    },
+    {
+      "path": "200f/video/be_r0c2_pitch_bistro_t11_a007_v11.mp4",
+      "bytes": 2687529
+    },
+    {
+      "path": "200f/video/be_r1c0_pitch_bistro_t00_a012_v00.mp4",
+      "bytes": 2809202
+    },
+    {
+      "path": "200f/video/be_r1c0_pitch_bistro_t01_a013_v01.mp4",
+      "bytes": 3692201
+    },
+    {
+      "path": "200f/video/be_r1c0_pitch_bistro_t02_a014_v02.mp4",
+      "bytes": 4205603
+    },
+    {
+      "path": "200f/video/be_r1c0_pitch_bistro_t03_a015_v03.mp4",
+      "bytes": 1420781
+    },
+    {
+      "path": "200f/video/be_r1c0_pitch_bistro_t04_a016_v04.mp4",
+      "bytes": 1510554
+    },
+    {
+      "path": "200f/video/be_r1c0_pitch_bistro_t05_a017_v05.mp4",
+      "bytes": 2364932
+    },
+    {
+      "path": "200f/video/be_r1c0_pitch_bistro_t06_a070_v06.mp4",
+      "bytes": 2169571
+    },
+    {
+      "path": "200f/video/be_r1c0_pitch_bistro_t07_a071_v07.mp4",
+      "bytes": 1004752
+    },
+    {
+      "path": "200f/video/be_r1c0_pitch_bistro_t08_a072_v08.mp4",
+      "bytes": 3212134
+    },
+    {
+      "path": "200f/video/be_r1c0_pitch_bistro_t09_a073_v09.mp4",
+      "bytes": 4118326
+    },
+    {
+      "path": "200f/video/be_r1c0_pitch_bistro_t10_a012_v10.mp4",
+      "bytes": 1963586
+    },
+    {
+      "path": "200f/video/be_r1c0_pitch_bistro_t11_a013_v11.mp4",
+      "bytes": 3799229
+    },
+    {
+      "path": "200f/video/be_r1c1_pitch_bistro_t00_a018_v00.mp4",
+      "bytes": 1461546
+    },
+    {
+      "path": "200f/video/be_r1c1_pitch_bistro_t01_a019_v01.mp4",
+      "bytes": 1330258
+    },
+    {
+      "path": "200f/video/be_r1c1_pitch_bistro_t02_a020_v02.mp4",
+      "bytes": 1651176
+    },
+    {
+      "path": "200f/video/be_r1c1_pitch_bistro_t03_a018_v03.mp4",
+      "bytes": 1776694
+    },
+    {
+      "path": "200f/video/be_r1c1_pitch_bistro_t04_a019_v04.mp4",
+      "bytes": 1138946
+    },
+    {
+      "path": "200f/video/be_r1c1_pitch_bistro_t05_a020_v05.mp4",
+      "bytes": 1623448
+    },
+    {
+      "path": "200f/video/be_r1c1_pitch_bistro_t06_a018_v06.mp4",
+      "bytes": 1561976
+    },
+    {
+      "path": "200f/video/be_r1c1_pitch_bistro_t07_a019_v07.mp4",
+      "bytes": 1159921
+    },
+    {
+      "path": "200f/video/be_r1c1_pitch_bistro_t08_a020_v08.mp4",
+      "bytes": 1560670
+    },
+    {
+      "path": "200f/video/be_r1c1_pitch_bistro_t09_a018_v09.mp4",
+      "bytes": 1748837
+    },
+    {
+      "path": "200f/video/be_r1c1_pitch_bistro_t10_a019_v10.mp4",
+      "bytes": 1230946
+    },
+    {
+      "path": "200f/video/be_r1c1_pitch_bistro_t11_a020_v11.mp4",
+      "bytes": 1591460
+    },
+    {
+      "path": "200f/video/be_r1c2_pitch_bistro_t00_a084_v00.mp4",
+      "bytes": 2130424
+    },
+    {
+      "path": "200f/video/be_r1c2_pitch_bistro_t01_a085_v01.mp4",
+      "bytes": 1871450
+    },
+    {
+      "path": "200f/video/be_r1c2_pitch_bistro_t02_a086_v02.mp4",
+      "bytes": 1627607
+    },
+    {
+      "path": "200f/video/be_r1c2_pitch_bistro_t03_a087_v03.mp4",
+      "bytes": 1056410
+    },
+    {
+      "path": "200f/video/be_r1c2_pitch_bistro_t04_a088_v04.mp4",
+      "bytes": 773089
+    },
+    {
+      "path": "200f/video/be_r1c2_pitch_bistro_t05_a089_v05.mp4",
+      "bytes": 1085950
+    },
+    {
+      "path": "200f/video/be_r1c2_pitch_bistro_t06_a084_v06.mp4",
+      "bytes": 1698414
+    },
+    {
+      "path": "200f/video/be_r1c2_pitch_bistro_t07_a085_v07.mp4",
+      "bytes": 2079957
+    },
+    {
+      "path": "200f/video/be_r1c2_pitch_bistro_t09_a087_v09.mp4",
+      "bytes": 1028901
+    },
+    {
+      "path": "200f/video/be_r1c2_pitch_bistro_t10_a088_v10.mp4",
+      "bytes": 1157415
+    },
+    {
+      "path": "200f/video/be_r1c2_pitch_bistro_t11_a089_v11.mp4",
+      "bytes": 880382
+    },
+    {
+      "path": "200f/video/bi_r0c0_pitch_bistro_t00_a021_v00.mp4",
+      "bytes": 1745127
+    },
+    {
+      "path": "200f/video/bi_r0c0_pitch_bistro_t01_a022_v01.mp4",
+      "bytes": 1429025
+    },
+    {
+      "path": "200f/video/bi_r0c0_pitch_bistro_t02_a023_v02.mp4",
+      "bytes": 1115950
+    },
+    {
+      "path": "200f/video/bi_r0c0_pitch_bistro_t03_a024_v03.mp4",
+      "bytes": 2251918
+    },
+    {
+      "path": "200f/video/bi_r0c0_pitch_bistro_t04_a021_v04.mp4",
+      "bytes": 1916008
+    },
+    {
+      "path": "200f/video/bi_r0c0_pitch_bistro_t05_a022_v05.mp4",
+      "bytes": 1561562
+    },
+    {
+      "path": "200f/video/bi_r0c0_pitch_bistro_t06_a023_v06.mp4",
+      "bytes": 1706121
+    },
+    {
+      "path": "200f/video/bi_r0c0_pitch_bistro_t07_a024_v07.mp4",
+      "bytes": 1931082
+    },
+    {
+      "path": "200f/video/bi_r0c0_pitch_bistro_t08_a021_v08.mp4",
+      "bytes": 1846875
+    },
+    {
+      "path": "200f/video/bi_r0c0_pitch_bistro_t09_a022_v09.mp4",
+      "bytes": 1631368
+    },
+    {
+      "path": "200f/video/bi_r0c0_pitch_bistro_t10_a023_v10.mp4",
+      "bytes": 1374284
+    },
+    {
+      "path": "200f/video/bi_r0c0_pitch_bistro_t11_a024_v11.mp4",
+      "bytes": 2014044
+    },
+    {
+      "path": "200f/video/bi_r0c1_pitch_bistro_t00_a025_v00.mp4",
+      "bytes": 1978826
+    },
+    {
+      "path": "200f/video/bi_r0c1_pitch_bistro_t01_a026_v01.mp4",
+      "bytes": 1966197
+    },
+    {
+      "path": "200f/video/bi_r0c1_pitch_bistro_t02_a027_v02.mp4",
+      "bytes": 1811623
+    },
+    {
+      "path": "200f/video/bi_r0c1_pitch_bistro_t03_a028_v03.mp4",
+      "bytes": 2165609
+    },
+    {
+      "path": "200f/video/bi_r0c1_pitch_bistro_t04_a025_v04.mp4",
+      "bytes": 2173296
+    },
+    {
+      "path": "200f/video/bi_r0c1_pitch_bistro_t05_a026_v05.mp4",
+      "bytes": 2212757
+    },
+    {
+      "path": "200f/video/bi_r0c1_pitch_bistro_t06_a027_v06.mp4",
+      "bytes": 1900316
+    },
+    {
+      "path": "200f/video/bi_r0c1_pitch_bistro_t07_a028_v07.mp4",
+      "bytes": 2267890
+    },
+    {
+      "path": "200f/video/bi_r0c1_pitch_bistro_t08_a025_v08.mp4",
+      "bytes": 2143190
+    },
+    {
+      "path": "200f/video/bi_r0c1_pitch_bistro_t09_a026_v09.mp4",
+      "bytes": 1928187
+    },
+    {
+      "path": "200f/video/bi_r0c1_pitch_bistro_t10_a027_v10.mp4",
+      "bytes": 1430665
+    },
+    {
+      "path": "200f/video/bi_r0c1_pitch_bistro_t11_a028_v11.mp4",
+      "bytes": 2032957
+    },
+    {
+      "path": "200f/video/bi_r1c0_pitch_bistro_t00_a029_v00.mp4",
+      "bytes": 1339597
+    },
+    {
+      "path": "200f/video/bi_r1c0_pitch_bistro_t01_a030_v01.mp4",
+      "bytes": 1269772
+    },
+    {
+      "path": "200f/video/bi_r1c0_pitch_bistro_t02_a031_v02.mp4",
+      "bytes": 997965
+    },
+    {
+      "path": "200f/video/bi_r1c0_pitch_bistro_t03_a032_v03.mp4",
+      "bytes": 1470744
+    },
+    {
+      "path": "200f/video/bi_r1c0_pitch_bistro_t04_a029_v04.mp4",
+      "bytes": 1410855
+    },
+    {
+      "path": "200f/video/bi_r1c0_pitch_bistro_t05_a030_v05.mp4",
+      "bytes": 925467
+    },
+    {
+      "path": "200f/video/bi_r1c0_pitch_bistro_t06_a031_v06.mp4",
+      "bytes": 1089446
+    },
+    {
+      "path": "200f/video/bi_r1c0_pitch_bistro_t07_a032_v07.mp4",
+      "bytes": 1275263
+    },
+    {
+      "path": "200f/video/bi_r1c0_pitch_bistro_t08_a029_v08.mp4",
+      "bytes": 1601137
+    },
+    {
+      "path": "200f/video/bi_r1c0_pitch_bistro_t09_a030_v09.mp4",
+      "bytes": 1322174
+    },
+    {
+      "path": "200f/video/bi_r1c0_pitch_bistro_t10_a031_v10.mp4",
+      "bytes": 1179386
+    },
+    {
+      "path": "200f/video/bi_r1c0_pitch_bistro_t11_a032_v11.mp4",
+      "bytes": 1138187
+    },
+    {
+      "path": "200f/video/bi_r1c1_pitch_bistro_t01_a034_v01.mp4",
+      "bytes": 735038
+    },
+    {
+      "path": "200f/video/bi_r1c1_pitch_bistro_t05_a034_v05.mp4",
+      "bytes": 653616
+    },
+    {
+      "path": "200f/video/bi_r1c1_pitch_bistro_t06_a035_v06.mp4",
+      "bytes": 1191504
+    },
+    {
+      "path": "200f/video/bi_r1c1_pitch_bistro_t09_a034_v09.mp4",
+      "bytes": 963916
+    },
+    {
+      "path": "200f/video/bi_r1c1_pitch_bistro_t10_a035_v10.mp4",
+      "bytes": 1205283
+    },
+    {
+      "path": "200f/video/bw_r0c0_pitch_bistro_t00_a037_v00.mp4",
+      "bytes": 1342837
+    },
+    {
+      "path": "200f/video/bw_r0c0_pitch_bistro_t01_a038_v01.mp4",
+      "bytes": 1360821
+    },
+    {
+      "path": "200f/video/bw_r0c0_pitch_bistro_t02_a039_v02.mp4",
+      "bytes": 1086141
+    },
+    {
+      "path": "200f/video/bw_r0c0_pitch_bistro_t03_a040_v03.mp4",
+      "bytes": 1935629
+    },
+    {
+      "path": "200f/video/bw_r0c0_pitch_bistro_t04_a041_v04.mp4",
+      "bytes": 1240398
+    },
+    {
+      "path": "200f/video/bw_r0c0_pitch_bistro_t05_a042_v05.mp4",
+      "bytes": 1570406
+    },
+    {
+      "path": "200f/video/bw_r0c0_pitch_bistro_t06_a077_v06.mp4",
+      "bytes": 985998
+    },
+    {
+      "path": "200f/video/bw_r0c0_pitch_bistro_t07_a037_v07.mp4",
+      "bytes": 1335073
+    },
+    {
+      "path": "200f/video/bw_r0c0_pitch_bistro_t08_a038_v08.mp4",
+      "bytes": 1615137
+    },
+    {
+      "path": "200f/video/bw_r0c0_pitch_bistro_t09_a039_v09.mp4",
+      "bytes": 1122547
+    },
+    {
+      "path": "200f/video/bw_r0c0_pitch_bistro_t10_a040_v10.mp4",
+      "bytes": 1869663
+    },
+    {
+      "path": "200f/video/bw_r0c0_pitch_bistro_t11_a041_v11.mp4",
+      "bytes": 1067764
+    },
+    {
+      "path": "200f/video/bw_r0c1_pitch_bistro_t00_a043_v00.mp4",
+      "bytes": 1123614
+    },
+    {
+      "path": "200f/video/bw_r0c1_pitch_bistro_t01_a044_v01.mp4",
+      "bytes": 1459700
+    },
+    {
+      "path": "200f/video/bw_r0c1_pitch_bistro_t02_a045_v02.mp4",
+      "bytes": 1010401
+    },
+    {
+      "path": "200f/video/bw_r0c1_pitch_bistro_t03_a046_v03.mp4",
+      "bytes": 1304632
+    },
+    {
+      "path": "200f/video/bw_r0c1_pitch_bistro_t04_a047_v04.mp4",
+      "bytes": 1237342
+    },
+    {
+      "path": "200f/video/bw_r0c1_pitch_bistro_t06_a043_v06.mp4",
+      "bytes": 1067511
+    },
+    {
+      "path": "200f/video/bw_r0c1_pitch_bistro_t07_a044_v07.mp4",
+      "bytes": 784212
+    },
+    {
+      "path": "200f/video/bw_r0c1_pitch_bistro_t09_a046_v09.mp4",
+      "bytes": 1275269
+    },
+    {
+      "path": "200f/video/bw_r0c1_pitch_bistro_t10_a047_v10.mp4",
+      "bytes": 1070927
+    },
+    {
+      "path": "200f/video/bw_r0c1_pitch_bistro_t11_a048_v11.mp4",
+      "bytes": 920704
+    },
+    {
+      "path": "200f/video/bw_r1c0_pitch_bistro_t00_a049_v00.mp4",
+      "bytes": 1534635
+    },
+    {
+      "path": "200f/video/bw_r1c0_pitch_bistro_t01_a050_v01.mp4",
+      "bytes": 1008573
+    },
+    {
+      "path": "200f/video/bw_r1c0_pitch_bistro_t02_a051_v02.mp4",
+      "bytes": 1161711
+    },
+    {
+      "path": "200f/video/bw_r1c0_pitch_bistro_t03_a052_v03.mp4",
+      "bytes": 1272741
+    },
+    {
+      "path": "200f/video/bw_r1c0_pitch_bistro_t04_a053_v04.mp4",
+      "bytes": 1445822
+    },
+    {
+      "path": "200f/video/bw_r1c0_pitch_bistro_t05_a078_v05.mp4",
+      "bytes": 1229191
+    },
+    {
+      "path": "200f/video/bw_r1c0_pitch_bistro_t07_a080_v07.mp4",
+      "bytes": 1298962
+    },
+    {
+      "path": "200f/video/bw_r1c0_pitch_bistro_t08_a049_v08.mp4",
+      "bytes": 1386536
+    },
+    {
+      "path": "200f/video/bw_r1c0_pitch_bistro_t09_a050_v09.mp4",
+      "bytes": 1289742
+    },
+    {
+      "path": "200f/video/bw_r1c0_pitch_bistro_t10_a051_v10.mp4",
+      "bytes": 1170529
+    },
+    {
+      "path": "200f/video/bw_r1c0_pitch_bistro_t11_a052_v11.mp4",
+      "bytes": 1055119
+    },
+    {
+      "path": "200f/video/bw_r1c1_pitch_bistro_t00_a054_v00.mp4",
+      "bytes": 1079807
+    },
+    {
+      "path": "200f/video/bw_r1c1_pitch_bistro_t01_a055_v01.mp4",
+      "bytes": 1038317
+    },
+    {
+      "path": "200f/video/bw_r1c1_pitch_bistro_t06_a081_v06.mp4",
+      "bytes": 948330
+    },
+    {
+      "path": "200f/video/bw_r1c1_pitch_bistro_t07_a082_v07.mp4",
+      "bytes": 979414
+    },
+    {
+      "path": "200f/video/bw_r1c1_pitch_bistro_t09_a054_v09.mp4",
+      "bytes": 1230143
+    },
+    {
+      "path": "200f/video/bw_r1c1_pitch_bistro_t10_a055_v10.mp4",
+      "bytes": 1095735
+    },
+    {
+      "path": "200f/video/cap_br_pitch_builtin_c01_cameramain_v00.mp4",
+      "bytes": 915142
+    },
+    {
+      "path": "200f/video/cap_br_pitch_builtin_c01_cameramain_v01.mp4",
+      "bytes": 689477
+    },
+    {
+      "path": "200f/video/cap_br_pitch_builtin_c01_cameramain_v02.mp4",
+      "bytes": 892425
+    },
+    {
+      "path": "200f/video/cap_br_pitch_builtin_c01_cameramain_v03.mp4",
+      "bytes": 705453
+    },
+    {
+      "path": "200f/video/cap_br_pitch_builtin_c02_cameratabletop_v00.mp4",
+      "bytes": 846247
+    },
+    {
+      "path": "200f/video/cap_br_pitch_builtin_c02_cameratabletop_v01.mp4",
+      "bytes": 961875
+    },
+    {
+      "path": "200f/video/cap_br_pitch_builtin_c02_cameratabletop_v02.mp4",
+      "bytes": 705980
+    },
+    {
+      "path": "200f/video/cap_br_pitch_builtin_c02_cameratabletop_v03.mp4",
+      "bytes": 755425
+    },
+    {
+      "path": "200f/video/cap_br_pitch_builtin_c03_cameratopdown_v00.mp4",
+      "bytes": 1118427
+    },
+    {
+      "path": "200f/video/cap_br_pitch_builtin_c03_cameratopdown_v01.mp4",
+      "bytes": 751861
+    },
+    {
+      "path": "200f/video/cap_br_pitch_builtin_c03_cameratopdown_v02.mp4",
+      "bytes": 1084483
+    },
+    {
+      "path": "200f/video/cap_br_pitch_builtin_c03_cameratopdown_v03.mp4",
+      "bytes": 1040026
+    },
+    {
+      "path": "200f/video/cap_sp_pitch_sponza_c01_cameramain_v00.mp4",
+      "bytes": 2377200
+    },
+    {
+      "path": "200f/video/cap_sp_pitch_sponza_c01_cameramain_v03.mp4",
+      "bytes": 1939657
+    },
+    {
+      "path": "200f/video/cap_sp_pitch_sponza_c02_cameraalternate_v00.mp4",
+      "bytes": 2566239
+    },
+    {
+      "path": "200f/video/cap_sp_pitch_sponza_c02_cameraalternate_v01.mp4",
+      "bytes": 1720701
+    },
+    {
+      "path": "200f/video/cap_sp_pitch_sponza_c02_cameraalternate_v03.mp4",
+      "bytes": 1890342
+    },
+    {
+      "path": "200f/video/cap_sp_pitch_sponza_c03_camerabalcony_v00.mp4",
+      "bytes": 1901587
+    },
+    {
+      "path": "200f/video/cap_sp_pitch_sponza_c03_camerabalcony_v02.mp4",
+      "bytes": 1865732
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_162_hidden_alley.mp4",
+      "bytes": 2384984
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_163_hidden_alley.mp4",
+      "bytes": 2658454
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_164_hidden_alley.mp4",
+      "bytes": 2290922
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_165_hidden_alley.mp4",
+      "bytes": 2861541
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_166_hidden_alley.mp4",
+      "bytes": 1753469
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_167_hidden_alley.mp4",
+      "bytes": 1624991
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_169_hidden_alley.mp4",
+      "bytes": 2735502
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_170_hidden_alley.mp4",
+      "bytes": 2556636
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_171_hidden_alley.mp4",
+      "bytes": 2031855
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_172_namaqualand.mp4",
+      "bytes": 3689434
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_173_namaqualand.mp4",
+      "bytes": 4293613
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_174_namaqualand.mp4",
+      "bytes": 4799533
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_175_namaqualand.mp4",
+      "bytes": 2617389
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_176_namaqualand.mp4",
+      "bytes": 3212920
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_177_namaqualand.mp4",
+      "bytes": 2348399
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_178_namaqualand.mp4",
+      "bytes": 2976430
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_179_namaqualand.mp4",
+      "bytes": 2395475
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_180_namaqualand.mp4",
+      "bytes": 2215502
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_181_namaqualand.mp4",
+      "bytes": 3505066
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_182_namaqualand.mp4",
+      "bytes": 1641816
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_183_namaqualand.mp4",
+      "bytes": 1781107
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_184_namaqualand.mp4",
+      "bytes": 2529348
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_185_namaqualand.mp4",
+      "bytes": 2108877
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_186_namaqualand.mp4",
+      "bytes": 4047442
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_187_namaqualand.mp4",
+      "bytes": 2868391
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_188_namaqualand.mp4",
+      "bytes": 1432794
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_189_namaqualand.mp4",
+      "bytes": 1374009
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_190_namaqualand.mp4",
+      "bytes": 4063991
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_191_namaqualand.mp4",
+      "bytes": 1883201
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_192_namaqualand.mp4",
+      "bytes": 1615296
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_193_namaqualand.mp4",
+      "bytes": 1513808
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_194_namaqualand.mp4",
+      "bytes": 1957639
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_196_the_shed.mp4",
+      "bytes": 1706285
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_197_the_shed.mp4",
+      "bytes": 1554473
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_198_the_shed.mp4",
+      "bytes": 2097273
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_199_the_shed.mp4",
+      "bytes": 2570561
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_200_the_shed.mp4",
+      "bytes": 3328327
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_201_the_shed.mp4",
+      "bytes": 3023480
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_202_the_shed.mp4",
+      "bytes": 3083933
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_203_the_shed.mp4",
+      "bytes": 1359205
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_204_the_shed.mp4",
+      "bytes": 1782154
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_205_the_shed.mp4",
+      "bytes": 2259607
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_206_the_shed.mp4",
+      "bytes": 2572914
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_207_the_shed.mp4",
+      "bytes": 2077827
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_208_the_shed.mp4",
+      "bytes": 2674951
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_209_the_shed.mp4",
+      "bytes": 2750199
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_210_the_shed.mp4",
+      "bytes": 2630144
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_211_the_shed.mp4",
+      "bytes": 2481170
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_212_the_shed.mp4",
+      "bytes": 2237612
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_213_the_shed.mp4",
+      "bytes": 3186071
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_214_the_shed.mp4",
+      "bytes": 2935778
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_215_verdant_trail.mp4",
+      "bytes": 4317096
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_216_verdant_trail.mp4",
+      "bytes": 4685483
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_217_verdant_trail.mp4",
+      "bytes": 3677353
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_218_verdant_trail.mp4",
+      "bytes": 3379474
+    },
+    {
+      "path": "200f/video/polyamp_bistro_demo_219_verdant_trail.mp4",
+      "bytes": 3817152
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_000_hidden_alley.mp4",
+      "bytes": 2840513
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_001_hidden_alley.mp4",
+      "bytes": 2461823
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_002_hidden_alley.mp4",
+      "bytes": 2554946
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_003_hidden_alley.mp4",
+      "bytes": 2275921
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_004_hidden_alley.mp4",
+      "bytes": 2881636
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_005_hidden_alley.mp4",
+      "bytes": 2051006
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_006_hidden_alley.mp4",
+      "bytes": 2392013
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_007_hidden_alley.mp4",
+      "bytes": 2557966
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_008_hidden_alley.mp4",
+      "bytes": 2138818
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_009_hidden_alley.mp4",
+      "bytes": 2875265
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_010_hidden_alley.mp4",
+      "bytes": 2200815
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_011_hidden_alley.mp4",
+      "bytes": 2468793
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_012_hidden_alley.mp4",
+      "bytes": 2871218
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_013_hidden_alley.mp4",
+      "bytes": 2335626
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_014_hidden_alley.mp4",
+      "bytes": 2509422
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_015_hidden_alley.mp4",
+      "bytes": 1845258
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_016_hidden_alley.mp4",
+      "bytes": 1768585
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_017_hidden_alley.mp4",
+      "bytes": 1882037
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_018_hidden_alley.mp4",
+      "bytes": 2067462
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_019_hidden_alley.mp4",
+      "bytes": 1516502
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_020_hidden_alley.mp4",
+      "bytes": 1652690
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_021_hidden_alley.mp4",
+      "bytes": 2956985
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_022_hidden_alley.mp4",
+      "bytes": 1693013
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_023_hidden_alley.mp4",
+      "bytes": 1831787
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_024_hidden_alley.mp4",
+      "bytes": 1856611
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_025_hidden_alley.mp4",
+      "bytes": 2734031
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_026_hidden_alley.mp4",
+      "bytes": 2880062
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_027_hidden_alley.mp4",
+      "bytes": 3161222
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_028_hidden_alley.mp4",
+      "bytes": 1843541
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_029_hidden_alley.mp4",
+      "bytes": 1420583
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_030_hidden_alley.mp4",
+      "bytes": 2044771
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_031_hidden_alley.mp4",
+      "bytes": 3173666
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_032_hidden_alley.mp4",
+      "bytes": 1172346
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_033_namaqualand.mp4",
+      "bytes": 3179728
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_034_namaqualand.mp4",
+      "bytes": 1707382
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_035_namaqualand.mp4",
+      "bytes": 4085731
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_036_namaqualand.mp4",
+      "bytes": 2796684
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_037_namaqualand.mp4",
+      "bytes": 3392424
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_038_namaqualand.mp4",
+      "bytes": 4149243
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_039_namaqualand.mp4",
+      "bytes": 4383243
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_040_namaqualand.mp4",
+      "bytes": 3073798
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_041_namaqualand.mp4",
+      "bytes": 3062695
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_042_namaqualand.mp4",
+      "bytes": 4601506
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_043_namaqualand.mp4",
+      "bytes": 1919552
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_044_namaqualand.mp4",
+      "bytes": 2388757
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_045_namaqualand.mp4",
+      "bytes": 3367157
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_046_namaqualand.mp4",
+      "bytes": 2937150
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_047_namaqualand.mp4",
+      "bytes": 2626006
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_048_namaqualand.mp4",
+      "bytes": 3164146
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_049_namaqualand.mp4",
+      "bytes": 2734223
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_050_namaqualand.mp4",
+      "bytes": 2924757
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_051_namaqualand.mp4",
+      "bytes": 2747786
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_052_namaqualand.mp4",
+      "bytes": 3750351
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_053_namaqualand.mp4",
+      "bytes": 4382604
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_054_namaqualand.mp4",
+      "bytes": 2943696
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_055_namaqualand.mp4",
+      "bytes": 2540635
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_056_namaqualand.mp4",
+      "bytes": 3448366
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_057_namaqualand.mp4",
+      "bytes": 2317709
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_058_namaqualand.mp4",
+      "bytes": 3721106
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_059_namaqualand.mp4",
+      "bytes": 1999318
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_060_namaqualand.mp4",
+      "bytes": 3266109
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_061_namaqualand.mp4",
+      "bytes": 3203337
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_062_namaqualand.mp4",
+      "bytes": 1390397
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_064_namaqualand.mp4",
+      "bytes": 1837516
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_069_namaqualand.mp4",
+      "bytes": 3247359
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_070_namaqualand.mp4",
+      "bytes": 2781126
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_071_namaqualand.mp4",
+      "bytes": 3388647
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_072_namaqualand.mp4",
+      "bytes": 1953180
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_073_namaqualand.mp4",
+      "bytes": 2919457
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_074_namaqualand.mp4",
+      "bytes": 2222868
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_075_namaqualand.mp4",
+      "bytes": 1465051
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_076_namaqualand.mp4",
+      "bytes": 4738126
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_077_namaqualand.mp4",
+      "bytes": 4319103
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_078_namaqualand.mp4",
+      "bytes": 3085310
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_079_namaqualand.mp4",
+      "bytes": 1582980
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_080_namaqualand.mp4",
+      "bytes": 2038903
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_081_namaqualand.mp4",
+      "bytes": 1677541
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_082_namaqualand.mp4",
+      "bytes": 3146621
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_083_namaqualand.mp4",
+      "bytes": 3136736
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_084_namaqualand.mp4",
+      "bytes": 2527367
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_085_namaqualand.mp4",
+      "bytes": 1902839
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_086_namaqualand.mp4",
+      "bytes": 2065796
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_087_namaqualand.mp4",
+      "bytes": 1734128
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_088_namaqualand.mp4",
+      "bytes": 3041610
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_089_namaqualand.mp4",
+      "bytes": 1764020
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_090_namaqualand.mp4",
+      "bytes": 4894835
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_091_namaqualand.mp4",
+      "bytes": 3449098
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_092_namaqualand.mp4",
+      "bytes": 4147581
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_093_namaqualand.mp4",
+      "bytes": 1572851
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_094_namaqualand.mp4",
+      "bytes": 2715704
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_095_namaqualand.mp4",
+      "bytes": 1745380
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_096_namaqualand.mp4",
+      "bytes": 3178545
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_097_namaqualand.mp4",
+      "bytes": 2664855
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_098_namaqualand.mp4",
+      "bytes": 2625770
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_099_namaqualand.mp4",
+      "bytes": 2063854
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_100_namaqualand.mp4",
+      "bytes": 2447230
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_101_namaqualand.mp4",
+      "bytes": 1656920
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_104_namaqualand.mp4",
+      "bytes": 1938624
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_105_the_shed.mp4",
+      "bytes": 1449806
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_106_the_shed.mp4",
+      "bytes": 2166246
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_107_the_shed.mp4",
+      "bytes": 1872584
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_108_the_shed.mp4",
+      "bytes": 1721274
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_109_the_shed.mp4",
+      "bytes": 2760354
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_110_the_shed.mp4",
+      "bytes": 1590799
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_111_the_shed.mp4",
+      "bytes": 2636496
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_112_the_shed.mp4",
+      "bytes": 2440624
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_113_the_shed.mp4",
+      "bytes": 2512449
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_114_the_shed.mp4",
+      "bytes": 2385460
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_115_the_shed.mp4",
+      "bytes": 2614485
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_116_the_shed.mp4",
+      "bytes": 2427927
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_117_the_shed.mp4",
+      "bytes": 3039280
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_118_the_shed.mp4",
+      "bytes": 3135917
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_119_the_shed.mp4",
+      "bytes": 2524541
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_120_the_shed.mp4",
+      "bytes": 2983550
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_121_the_shed.mp4",
+      "bytes": 2774979
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_122_the_shed.mp4",
+      "bytes": 2147871
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_125_the_shed.mp4",
+      "bytes": 3275210
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_129_the_shed.mp4",
+      "bytes": 2796543
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_130_the_shed.mp4",
+      "bytes": 1799583
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_132_the_shed.mp4",
+      "bytes": 3278186
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_134_the_shed.mp4",
+      "bytes": 2771907
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_135_the_shed.mp4",
+      "bytes": 2684353
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_136_the_shed.mp4",
+      "bytes": 2618098
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_137_the_shed.mp4",
+      "bytes": 2539002
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_138_the_shed.mp4",
+      "bytes": 2115125
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_139_the_shed.mp4",
+      "bytes": 2586759
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_140_the_shed.mp4",
+      "bytes": 2422414
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_143_the_shed.mp4",
+      "bytes": 1919281
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_144_the_shed.mp4",
+      "bytes": 3033234
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_145_the_shed.mp4",
+      "bytes": 2804487
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_146_the_shed.mp4",
+      "bytes": 2916964
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_147_the_shed.mp4",
+      "bytes": 3775350
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_149_the_shed.mp4",
+      "bytes": 2829957
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_150_the_shed.mp4",
+      "bytes": 2496246
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_151_the_shed.mp4",
+      "bytes": 2418127
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_152_the_shed.mp4",
+      "bytes": 2313153
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_153_the_shed.mp4",
+      "bytes": 2478044
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_154_the_shed.mp4",
+      "bytes": 2611356
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_155_the_shed.mp4",
+      "bytes": 2611943
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_156_the_shed.mp4",
+      "bytes": 2945335
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_157_the_shed.mp4",
+      "bytes": 2957615
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_158_the_shed.mp4",
+      "bytes": 3630342
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_159_the_shed.mp4",
+      "bytes": 2321164
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_160_the_shed.mp4",
+      "bytes": 3071588
+    },
+    {
+      "path": "200f/video/polyamp_bistro_selected3x_161_the_shed.mp4",
+      "bytes": 2887675
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_lower_2_000_a00_v00.mp4",
+      "bytes": 1333696
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_lower_2_000_a00_v01.mp4",
+      "bytes": 1757833
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_lower_2_001_a01_v00.mp4",
+      "bytes": 2069118
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_lower_2_001_a01_v01.mp4",
+      "bytes": 1549053
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_lower_4_002_a02_v00.mp4",
+      "bytes": 1854518
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_lower_4_002_a02_v01.mp4",
+      "bytes": 1721367
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_lower_4_003_a03_v00.mp4",
+      "bytes": 2131363
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_lower_4_003_a03_v01.mp4",
+      "bytes": 2005604
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_lower_4_004_a04_v00.mp4",
+      "bytes": 2208997
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_lower_4_004_a04_v01.mp4",
+      "bytes": 1491026
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_lower_4_005_a05_v00.mp4",
+      "bytes": 1868189
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_lower_4_005_a05_v01.mp4",
+      "bytes": 2354193
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_round_40_012_a12_v00.mp4",
+      "bytes": 1807991
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_round_40_012_a12_v01.mp4",
+      "bytes": 1776582
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_round_40_013_a13_v00.mp4",
+      "bytes": 1811327
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_round_40_013_a13_v01.mp4",
+      "bytes": 1752500
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_round_40_014_a14_v00.mp4",
+      "bytes": 1889467
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_round_40_014_a14_v01.mp4",
+      "bytes": 1985517
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_round_40_015_a15_v00.mp4",
+      "bytes": 1935844
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_round_40_015_a15_v01.mp4",
+      "bytes": 2161341
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_stairtop_2_008_a08_v00.mp4",
+      "bytes": 2013185
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_stairtop_2_008_a08_v01.mp4",
+      "bytes": 2065620
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_stairtop_3_011_a11_v00.mp4",
+      "bytes": 2339827
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_stairtop_3_011_a11_v01.mp4",
+      "bytes": 2401515
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_stairtop_43_009_a09_v00.mp4",
+      "bytes": 1399341
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_stairtop_43_009_a09_v01.mp4",
+      "bytes": 1748573
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_stairtop_43_010_a10_v00.mp4",
+      "bytes": 2004610
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_floor_stairtop_43_010_a10_v01.mp4",
+      "bytes": 1854174
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_stairs_270_006_a06_v00.mp4",
+      "bytes": 1987006
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_stairs_270_006_a06_v01.mp4",
+      "bytes": 1996671
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_stairs_3_007_a07_v00.mp4",
+      "bytes": 2170767
+    },
+    {
+      "path": "200f/video/suntemple_v2_sm_stairs_3_007_a07_v01.mp4",
+      "bytes": 1589254
+    }
+  ],
+  "total_bytes": 953713714,
+  "weights": {
+    "encoder-original.pt": {
+      "url": "https://dl.fbaipublicfiles.com/vjepa2/vjepa2_1_vitG_384.pt",
+      "bytes": 30238058912
+    },
+    "predictor.pt": {
+      "url": "https://dl.fbaipublicfiles.com/robojepa/wm/wm-100m/cooldown_100m_150k.pth.tar",
+      "bytes": 417789702
+    }
+  }
+}

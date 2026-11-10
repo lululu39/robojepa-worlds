@@ -1,0 +1,15 @@
+{
+  "experiment": "capsaicin", "predictor_size": "100m", "seed": 42,
+  "height": 240, "width": 320, "frame_stride": 4,
+  "context_frames": 4, "rollout_steps": 2,
+  "batch_size": 2, "grad_accum": 4,
+  "max_steps": 2000, "max_train_seconds": 21600,
+  "segment_seconds": 1800, "save_every": 100, "eval_every": 200,
+  "learning_rate": 0.00002, "action_learning_rate": 0.0002,
+  "weight_decay": 0.01, "warmup_steps": 100, "grad_clip": 1.0,
+  "eval_windows_per_clip": 2, "eval_horizons": [1, 2, 5, 10],
+  "wandb_entity": "yibozhong657-none", "wandb_project": "robojepa-capsaicin",
+  "dtype": "bfloat16", "attention": "sdpa", "checkpointing": true,
+  "mouse_scale_degrees": 15.0, "preprocess": "resize_rgb_imagenet_normalize",
+  "initialization": "pretrained", "formal": true
+}

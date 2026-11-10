@@ -1,0 +1,6 @@
+[submodule "vendor/robo_jepa"]
+	path = vendor/robo_jepa
+	url = https://github.com/facebookresearch/robo_jepa.git
+[submodule "vendor/vjepa2"]
+	path = vendor/vjepa2
+	url = https://github.com/facebookresearch/vjepa2.git
