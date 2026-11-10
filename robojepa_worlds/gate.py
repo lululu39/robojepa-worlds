@@ -11,18 +11,20 @@ import torch
 
 from . import checkpoint
 from .common import ROOT,read_json,write_json
-from .encode import load_encoder,decode_frames,encode_tensor
+from .encode import compact_encoder,load_encoder,decode_frames,encode_tensor
 from .model import NavigationModel,objective,make_optimizer,rollout
 from .reference import reference_actions,reverse_sample
+from .prepare import archive
 
 
 def main():
     p=argparse.ArgumentParser(); p.add_argument('--data',required=True); p.add_argument('--weights',required=True)
-    p.add_argument('--out',required=True); a=p.parse_args()
+    p.add_argument('--out',required=True); p.add_argument('--weights-archive',required=True); a=p.parse_args()
     if not torch.cuda.is_available() or torch.cuda.device_count()!=1: raise RuntimeError('One GPU required')
     torch.set_num_threads(4); torch.manual_seed(42); random.seed(42); np.random.seed(42)
     cfg=read_json(ROOT/'experiments/capsaicin/pilot.json'); report={'complete':False}
     write_json(a.out,report); begin=time.monotonic()
+    encoder_bytes=compact_encoder(a.weights)
     index=read_json(Path(a.data)/'index.json')
     if index.get('schema')!=2: raise ValueError('Stale data contract')
     row=next(r for r in index['clips']
@@ -116,12 +118,14 @@ def main():
             changed_task=changed_task or not torch.equal(actual,original)
         elif not torch.equal(actual,original): raise AssertionError('Frozen trunk drift: '+name)
     if not changed_task: raise AssertionError('Task interface did not update')
+    archive(a.weights_archive,[(Path(a.weights),'weights')])
     report.update(complete=True,first_loss=first[0],gradient_norm=first[1],action_gradient_l1=first[2],
                   resume_max_parameter_error=maximum,resume_loss_error=abs(second[0]-repeated[0]),
                   batch_size=cfg['batch_size'],seconds_per_microbatch=seconds,
                   peak_predictor_gpu_bytes=torch.cuda.max_memory_allocated(),gpu=torch.cuda.get_device_name(),
                   torch=torch.__version__,cuda_architectures=torch.cuda.get_arch_list(),attention='sdpa',
                   frozen_trunk_and_old_embodiments_unchanged=True,source_window_frames=cfg['source_window_frames'],
+                  encoder_bytes=encoder_bytes,compact_weights_archive_bytes=Path(a.weights_archive).stat().st_size,
                   seconds=time.monotonic()-begin,source=read_json(ROOT/'source.json'))
     write_json(a.out,report); print('GATE_COMPLETE',report,flush=True)
 

@@ -4,6 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 import json
 import os
 from pathlib import Path
+import resource
 import shutil
 import tarfile
 import time
@@ -47,6 +48,8 @@ def main():
     print('DATA_DOWNLOAD_COMPLETE',flush=True)
     import av
     from .reference import reference_actions
+    import torch
+    torch.set_num_threads(2)
     stems=[Path(x['path']).stem for x in manifest['files'] if x['path'].endswith('.mp4')]
     split,scenes=make_splits(stems)
     rows=[]
@@ -54,6 +57,7 @@ def main():
         video=data/'200f/video'/f'{stem}.mp4'
         with av.open(str(video)) as container:
             stream=container.streams.video[0]; fps=float(stream.average_rate)
+            stream.thread_count=2
             pts=[]; count=0
             for frame in container.decode(stream):
                 count+=1
@@ -74,29 +78,24 @@ def main():
            'process_collisions':True,'preprocess':{k:cfg[k] for k in ['height','width','reference_crop','preprocess']},
            'reference':read_json(ROOT/'source.json')['upstream']['micro_world']}
     write_json(data/'index.json',index)
-    # Published encoder file includes auxiliary tensors. Preserve only target_encoder.
+    print('DATA_VALIDATION_COMPLETE',len(rows),flush=True)
+    # Keep this stage streaming-only for weights. The GPU gate compacts the encoder.
     weights=out/'weights'; weights.mkdir(exist_ok=True)
     urls=manifest['weights']
     for name,spec in urls.items():
+        print('WEIGHT_DOWNLOAD_START',name,spec['bytes'],flush=True)
         download(spec['url'],weights/name,spec['bytes'])
-    import torch
-    source=weights/'encoder-original.pt'
-    state=torch.load(source,map_location='cpu',mmap=True,weights_only=False)
-    if 'target_encoder' not in state: raise ValueError('Missing target encoder')
-    tensors=state['target_encoder']
-    if not tensors or not all(isinstance(v,torch.Tensor) for v in tensors.values()):
-        raise ValueError('Malformed encoder state')
-    torch.save({'target_encoder':tensors},weights/'encoder.pt')
-    del state,tensors
-    source.unlink()
+        print('WEIGHT_DOWNLOAD_COMPLETE',name,flush=True)
     archive(out/'capsaicin-data.tar',[(data,'data')])
-    archive(out/'robojepa-weights.tar',[(weights,'weights')])
+    archive(out/'robojepa-source-weights.tar',[(weights,'weights')])
     summary=dict(complete=True,created_at=time.time(),clips=len(rows),scenes=scenes,schema=2,
                  reference_parser_parity_clips=len(rows),action_units='degrees',process_collisions=True,
                  split_counts={s:sum(r['split']==s for r in rows) for s in ['train','val','test']},
                  frames=sum(r['frames'] for r in rows),cached_frames=sum(len(r['indices']) for r in rows),
                  artifacts={p.name:p.stat().st_size for p in out.glob('*.tar')},
-                 encoder_bytes=(weights/'encoder.pt').stat().st_size)
+                 encoder_source_bytes=(weights/'encoder-original.pt').stat().st_size,
+                 checkpoint_compaction='deferred to GPU gate',
+                 peak_process_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024)
     write_json(out/'preparation.json',summary)
     print(json.dumps(summary),flush=True)
 

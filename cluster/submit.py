@@ -46,7 +46,7 @@ def validate_inputs(stage,commit):
         raise RuntimeError('Successful schema-2 preparation required')
     if command(['git','diff','--name-only',preparation['source']['commit'],commit,'--',*INPUT_CODE]):
         raise RuntimeError('Preparation source is incompatible with the queued worker')
-    for name in ['runtime.tar','capsaicin-data.tar','robojepa-weights.tar']:
+    for name in ['runtime.tar','capsaicin-data.tar']+(['robojepa-source-weights.tar'] if stage=='gate' else []):
         artifact=STAGING/name
         if not artifact.is_file() or artifact.stat().st_size<=0: raise RuntimeError('Missing preparation artifact: '+name)
         expected=preparation.get('artifacts',{}).get(name)
@@ -56,6 +56,9 @@ def validate_inputs(stage,commit):
         if not gate.get('complete'): raise RuntimeError('GPU gate required')
         if command(['git','diff','--name-only',gate['source']['commit'],commit,'--',*INPUT_CODE]):
             raise RuntimeError('Queued worker differs from the GPU-validated implementation')
+        compact=STAGING/'robojepa-weights.tar'
+        if not compact.is_file() or compact.stat().st_size!=gate['compact_weights_archive_bytes']:
+            raise RuntimeError('Missing/incomplete compact weights from GPU gate')
     if stage=='train':
         for i in range(4):
             if not read_json(ROOT/f'experiments/capsaicin/reports/encode-{i}.json').get('complete'):
@@ -119,16 +122,19 @@ def main():
         outputs=['results.tar']; remaps=[f'results.tar={root}/results.tar']
         args=a.stage
         if a.stage=='prepare':
-            for name in ['runtime.tar','capsaicin-data.tar','robojepa-weights.tar']:
+            for name in ['runtime.tar','capsaicin-data.tar','robojepa-source-weights.tar']:
                 outputs.append(name); remaps.append(f'{name}={STAGING}/{name}')
         else:
-            for name in ['runtime.tar','capsaicin-data.tar','robojepa-weights.tar']:
+            weight_archive='robojepa-source-weights.tar' if a.stage=='gate' else 'robojepa-weights.tar'
+            for name in ['runtime.tar','capsaicin-data.tar',weight_archive]:
                 f=STAGING/name
                 if not a.defer and (not f.is_file() or not f.stat().st_size):
                     raise RuntimeError('Preparation artifact missing: '+name)
                 inputs.append('osdf:///chtc'+str(f))
         if a.stage in ['gate','train']:
             outputs.append('checkpoints.tar'); remaps.append(f'checkpoints.tar={root}/checkpoints.tar')
+        if a.stage=='gate':
+            outputs.append('robojepa-weights.tar'); remaps.append(f'robojepa-weights.tar={STAGING}/robojepa-weights.tar')
         if a.stage=='encode':
             args+=f' {a.shard}'; outputs.append('features.tar')
             remaps.append(f'features.tar={STAGING}/features-{a.shard}.tar')
@@ -142,9 +148,9 @@ def main():
             inputs.append('/home/yzhong239/.netrc')
         lines=['universe = vanilla',f'container_image = {IMAGE}','executable = worker.sh',f'arguments = {args}',
                'should_transfer_files = YES','when_to_transfer_output = ON_EXIT','stream_output = True','stream_error = True',
-               'requirements = (HasCHTCStaging == true)','request_cpus = 4',
-               'request_memory = '+('64GB' if a.stage=='prepare' else '48GB'),
-               'request_disk = '+('150GB' if a.stage=='prepare' else '160GB' if a.stage=='train' else '100GB'),
+               'requirements = (HasCHTCStaging == true)','request_cpus = '+('2' if a.stage=='prepare' else '4'),
+               'request_memory = '+('8GB' if a.stage=='prepare' else '48GB'),
+               'request_disk = '+('120GB' if a.stage=='prepare' else '160GB' if a.stage in ['gate','train'] else '100GB'),
                'transfer_input_files = '+','.join(inputs),'transfer_output_files = '+','.join(outputs),
                'transfer_output_remaps = "'+';'.join(remaps)+'"',
                'log = logs/job.log','output = logs/job.out','error = logs/job.err',
@@ -169,7 +175,7 @@ def main():
         state.update(job=job,status='held'); write_json(state_path,state)
         ad=json.loads(command(['condor_q',job,'-json']))[0]
         assert ad['JobStatus']==5 and ad.get('NumJobStarts',0)==0
-        assert ad['RequestCpus']==4
+        assert ad['RequestCpus']==(2 if a.stage=='prepare' else 4)
         assert 'nanochat-uv-v4.sif' in ad['TransferInput']
         if a.stage!='prepare': assert ad['RequestGPUs']==1 and 'H100|H200' in ad['RequireGPUs']
         if a.stage=='train':

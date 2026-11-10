@@ -4,6 +4,8 @@ The target is first-frame + keyboard/mouse controlled **video generation**, foll
 
 ## Data and actions
 
+Preparation requests 2 CPUs and 8 GB RAM, reuses the existing nanochat container, and builds the locked video runtime once. Weight downloads and tar packing are streamed; the 30 GB encoder checkpoint is never loaded/rewritten by this CPU job. The already-queued GPU gate (48 GB host RAM, 160 GB scratch) extracts `target_encoder` once and publishes the compact shared weights archive. All four encoding jobs reuse it.
+
 Only the fixed `200f/video/` and matching `200f/metadata-detection/` files from `amd/Micro-World-Capsaicin` are downloaded. The 440 clips occupy about 0.95 GB. Raw JSON is retained. Correct W/S once in memory using the upstream marker, then **call `VideoGameDataset._actions_to_tensors` directly**. Compare every clip's result against the small stdlib port before caching it.
 
 Actions are incoming-frame controls: row `i` describes motion into frame `i`; the first frame has zero control. A transition from cached frame `l` to `r=l+4` consumes rows `l+1` through `r`, in order. Each row has W/S/A/D/jump/sneak/sprint/pitch/yaw; four rows give 36 values, padded to RoboJEPA's 64 slots. Mouse values use the upstream factor × 15 conversion into **degrees**. No extra inference-time pitch flip is applied.

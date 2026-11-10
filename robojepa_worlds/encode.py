@@ -1,5 +1,7 @@
 """Single-GPU, independent-frame feature extraction with no W&B runs."""
 import argparse
+import gc
+import os
 from pathlib import Path
 import time
 
@@ -10,6 +12,23 @@ import torch
 from torch.nn import functional as F
 
 from .common import read_json, write_json, upstream_path
+
+
+def compact_encoder(weights):
+    """One-time checkpoint extraction on the GPU gate's higher-memory worker."""
+    weights=Path(weights); source=weights/'encoder-original.pt'; destination=weights/'encoder.pt'
+    state=torch.load(source,map_location='cpu',mmap=True,weights_only=False)
+    tensors=state.get('target_encoder')
+    if not tensors or not all(isinstance(v,torch.Tensor) for v in tensors.values()):
+        raise ValueError('Malformed target_encoder checkpoint')
+    temporary=destination.with_suffix('.pt.tmp')
+    with temporary.open('wb') as file:
+        torch.save({'target_encoder':tensors},file); file.flush(); os.fsync(file.fileno())
+    os.replace(temporary,destination)
+    del state,tensors; gc.collect()
+    source.unlink()
+    print('ENCODER_COMPACTED',destination.stat().st_size,flush=True)
+    return destination.stat().st_size
 
 
 def load_encoder(weights):
