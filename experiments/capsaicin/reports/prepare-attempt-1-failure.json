@@ -1,0 +1,19 @@
+{
+  "job_id": "8304909.0",
+  "attempt": 1,
+  "stage": "prepare",
+  "complete": false,
+  "source_commit": "54672461a1b54092b9faa801cf627282f386992e",
+  "failure": "av 14.4.0 has no CPython 3.11 Linux x86_64 wheel; source build requires absent FFmpeg development libraries",
+  "fix": "Pin av 14.2.0 with manylinux2014 CPython 3.11 x86_64 wheel; prohibit av source builds",
+  "environment_completed": false,
+  "data_preparation_started": false,
+  "formal_training_started": false,
+  "queue_fix": {
+    "previous_memory_mb": 65536,
+    "memory_mb": 8192,
+    "cpus": 2,
+    "matched_after_release_seconds": 21
+  },
+  "verification": "17 stdlib tests; frozen lock changes only av; actual installation must pass on worker"
+}
