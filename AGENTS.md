@@ -1,7 +1,8 @@
 # RoboJEPA Worlds 工作规则
 
 - 本仓库的目标是把**预训练 RoboJEPA 微调适配到已有工作的任务**。先读原任务工作的数据、训练、推理和评估代码，以它的任务定义为依据；不能只下载数据后另定一套任务并宣称完成适配。
-- Capsaicin 的任务参考是 `vendor/micro_world` 中固定版本的 AMD Micro-World 2。模型及预训练参数来自 `vendor/robo_jepa` / `vendor/vjepa2`，不改用 Micro-World、Wan 或其他世界模型的生成器 checkpoint。
+- Capsaicin 的任务参考是 `vendor/micro_world` 中固定版本的 AMD Micro-World 2。encoder / action-conditioned predictor 及预训练参数来自 `vendor/robo_jepa` / `vendor/vjepa2`，不改用 Micro-World、Wan 或其他世界模型的生成器 checkpoint。
+- RGB 解码默认使用 [JEPA-WMs](https://github.com/facebookresearch/jepa-wms) 的预训练 V-JEPA2 decoder（`facebook/jepa-wms/vjepa2_vitg_256_INet.pth.tar`），前接可训练 `Linear(1664, 1408)` adapter，保留 decoder 内部 1024 维。冻结 RoboJEPA，以真实帧 latent/RGB 做 adapter 预热及 adapter+decoder 微调，沿用 L2+LPIPS，再验证预测 latent 的 rollout 解码；适配横屏空间网格和位置编码。具体方案见 `experiments/capsaicin/README.md`，实施状态与授权见研究记录。
 - 新子实验必须记录上游仓库/commit/具体文件、直接复用的部分、RoboJEPA 必需的适配，以及保留的差异及理由。优先调用上游可复用代码；重写接口时增加与上游的数值对照，不用只验证自家实现的测试替代。
 - 特别核对动作单位/正负号/时间索引、视频采样、标签修正、条件输入、冻结范围、训练目标和评估协议。JEPA 与 diffusion/FM 的目标不能机械互换；需要修改时明确依据。
 - 潜在空间 loss、工程 gate、短测属于前置验证，不能替代原任务的视频生成、动作可控性和视频质量评估，也不能把 latent predictor 称为已完成的交互视频生成系统。
