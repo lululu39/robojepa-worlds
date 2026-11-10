@@ -1,9 +1,11 @@
 """Submit one bounded decoder integration gate, without a formal run or W&B."""
+import argparse
 import fcntl
 import json
 import os
 from pathlib import Path
 import shutil
+import tarfile
 import time
 
 from robojepa_worlds.common import ROOT, read_json, write_json
@@ -18,6 +20,9 @@ CACHE_AND_PREDICTOR_CODE = [
 
 
 def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--reuse-prepared',action='store_true')
+    args=parser.parse_args()
     GATE_ROOT.mkdir(parents=True,exist_ok=True)
     with (GATE_ROOT/'submit.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -44,9 +49,30 @@ def main():
         shutil.copy2(ROOT/'cluster/decoder_worker.sh',GATE_ROOT/'worker.sh')
         os.chmod(GATE_ROOT/'worker.sh',0o755)
         inputs=[str(GATE_ROOT/'source.tar'),str(checkpoint)]
-        inputs+=['osdf:///chtc'+str(STAGING/name) for name in ['runtime.tar','capsaicin-data.tar','robojepa-weights.tar',*[f'features-{i}.tar' for i in range(4)]]]
-        outputs=['results.tar','decoder-assets.tar','decoder-runtime.tar']
-        remaps=[f'results.tar={GATE_ROOT}/results.tar',f'decoder-assets.tar={STAGING}/decoder-assets.tar',f'decoder-runtime.tar={STAGING}/decoder-runtime.tar']
+        prepared={}
+        runtime_inputs=['runtime.tar']
+        outputs=['results.tar'];remaps=[f'results.tar={GATE_ROOT}/results.tar']
+        if args.reuse_prepared:
+            runtime_inputs=['decoder-runtime.tar','decoder-assets.tar']
+            for name in runtime_inputs:
+                prepared[name]=(STAGING/name).stat().st_size
+                if prepared[name]<=0:raise RuntimeError('Empty prepared artifact: '+name)
+            with tarfile.open(STAGING/'decoder-assets.tar','r:') as archive:
+                meta=json.load(archive.extractfile('assets/assets.json'))
+                if not meta['complete'] or meta['checkpoint']!=cfg['checkpoint'] or meta['vgg']!=cfg['vgg']:
+                    raise RuntimeError('Prepared asset metadata mismatch')
+                for prefix,key in [('assets/','checkpoint'),('assets/torch/hub/checkpoints/','vgg')]:
+                    member=archive.getmember(prefix+cfg[key]['filename'])
+                    if not member.isfile() or member.size!=cfg[key]['bytes']:raise RuntimeError('Prepared asset size mismatch')
+            with tarfile.open(STAGING/'decoder-runtime.tar','r:') as archive:
+                for name in ['pyproject.toml','uv.lock']:
+                    path='experiments/capsaicin/decoder_env/'+name
+                    if archive.extractfile(path).read()!=(ROOT/path).read_bytes():
+                        raise RuntimeError('Prepared decoder environment changed')
+        else:
+            outputs+=['decoder-assets.tar','decoder-runtime.tar']
+            remaps+=[f'decoder-assets.tar={STAGING}/decoder-assets.tar',f'decoder-runtime.tar={STAGING}/decoder-runtime.tar']
+        inputs+=['osdf:///chtc'+str(STAGING/name) for name in [*runtime_inputs,'capsaicin-data.tar','robojepa-weights.tar',*[f'features-{i}.tar' for i in range(4)]]]
         lines=['universe = vanilla',f'container_image = {IMAGE}','executable = worker.sh',
                'should_transfer_files = YES','when_to_transfer_output = ON_EXIT','stream_output = True','stream_error = True',
                'requirements = (HasCHTCStaging == true)','request_cpus = 4','request_memory = 16GB','request_disk = 100GB',
@@ -60,7 +86,8 @@ def main():
                'hold = true','queue 1']
         (GATE_ROOT/'job.sub').write_text('\n'.join(lines)+'\n')
         command(['condor_submit','-dry-run','dryrun.ad','job.sub'],GATE_ROOT)
-        state={'key':'decoder-gate','stage':'decoder-gate','source':source,'formal':False,'run_id':None,'submitted_at':time.time()}
+        state={'key':'decoder-gate','stage':'decoder-gate','source':source,'formal':False,'run_id':None,
+               'prepared_artifacts':prepared,'submitted_at':time.time()}
         write_json(GATE_ROOT/'intent.json',state)
         job=command(['condor_submit','-terse','job.sub'],GATE_ROOT).split()[0]
         state.update(job=job,status='held');write_json(GATE_ROOT/'state.json',state)

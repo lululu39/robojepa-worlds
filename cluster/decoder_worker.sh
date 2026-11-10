@@ -13,19 +13,30 @@ finish() {
 trap finish EXIT
 tar -xf source.tar
 cd source
-tar -xf "$TASK_ROOT/runtime.tar"
 export PATH="/opt/project/.venv/bin:$PATH"
 export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=4 WANDB_MODE=disabled
+export CUBLAS_WORKSPACE_CONFIG=:4096:8
 export UV_CACHE_DIR="$TASK_ROOT/uv-cache" UV_LINK_MODE=copy
 export UV_PROJECT_ENVIRONMENT="$PWD/.venv"
-uv sync --project experiments/capsaicin/decoder_env --frozen --python /opt/project/.venv/bin/python
+if [ -f "$TASK_ROOT/decoder-runtime.tar" ]; then
+    tar -xf "$TASK_ROOT/decoder-runtime.tar" .venv
+    uv sync --project experiments/capsaicin/decoder_env --frozen --offline --python /opt/project/.venv/bin/python
+else
+    tar -xf "$TASK_ROOT/runtime.tar"
+    uv sync --project experiments/capsaicin/decoder_env --frozen --python /opt/project/.venv/bin/python
+fi
 export PATH="$PWD/.venv/bin:$PATH" PYTHONPATH="$PWD"
 uv pip freeze --python .venv/bin/python > "$TASK_ROOT/results/environment.txt"
-python -m robojepa_worlds.decoder_prepare --out "$TASK_ROOT/assets"
-tar -cf "$TASK_ROOT/decoder-assets.tar.tmp" -C "$TASK_ROOT" assets
-mv "$TASK_ROOT/decoder-assets.tar.tmp" "$TASK_ROOT/decoder-assets.tar"
-tar -cf "$TASK_ROOT/decoder-runtime.tar.tmp" .venv experiments/capsaicin/decoder_env
-mv "$TASK_ROOT/decoder-runtime.tar.tmp" "$TASK_ROOT/decoder-runtime.tar"
+if [ -f "$TASK_ROOT/decoder-assets.tar" ]; then
+    tar -xf "$TASK_ROOT/decoder-assets.tar" -C "$TASK_ROOT"
+    python -m robojepa_worlds.decoder_prepare --out "$TASK_ROOT/assets" --verify-only
+else
+    python -m robojepa_worlds.decoder_prepare --out "$TASK_ROOT/assets"
+    tar -cf "$TASK_ROOT/decoder-assets.tar.tmp" -C "$TASK_ROOT" assets
+    mv "$TASK_ROOT/decoder-assets.tar.tmp" "$TASK_ROOT/decoder-assets.tar"
+    tar -cf "$TASK_ROOT/decoder-runtime.tar.tmp" .venv experiments/capsaicin/decoder_env
+    mv "$TASK_ROOT/decoder-runtime.tar.tmp" "$TASK_ROOT/decoder-runtime.tar"
+fi
 tar -xf "$TASK_ROOT/capsaicin-data.tar" -C "$TASK_ROOT"
 tar -xf "$TASK_ROOT/robojepa-weights.tar" -C "$TASK_ROOT"
 for TASK_ARCHIVE in "$TASK_ROOT"/features-*.tar; do tar -xf "$TASK_ARCHIVE" -C "$TASK_ROOT"; done

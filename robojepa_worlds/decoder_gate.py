@@ -19,6 +19,7 @@ from .common import ROOT, read_json, write_json
 from .model import NavigationModel, rollout
 from .rgb_data import RgbFeatureDataset
 from .rgb_decoder import RgbDecoder, make_loss, make_optimizer, rgb_loss, unpatchify
+from .decoder_recovery import state_difference
 
 
 def panels(target, reconstructed, predicted=None, title='Diagnostic decoder short fit'):
@@ -109,6 +110,8 @@ def main():
     optimizer = make_optimizer(model, cfg, joint=False)
     torch.cuda.reset_peak_memory_stats()
     history = []
+    report['history'] = history
+    write_json(out / 'decoder-gate.json', report)
 
     def update(step):
         if time.monotonic()-started > cfg['max_seconds']:
@@ -140,6 +143,8 @@ def main():
             optimizer = make_optimizer(model, cfg, joint=True)
         result = update(step)
         history.append(result)
+        report['updates'] = step
+        write_json(out / 'decoder-gate.json', report)
         print('DECODER_GATE_UPDATE', json.dumps(result), flush=True)
         if step == cfg['adapter_warmup_steps']+16:
             with tempfile.TemporaryDirectory() as tmp:
@@ -148,16 +153,40 @@ def main():
                 expected_rng=(random.random(),float(np.random.random()),float(torch.rand(1,device='cuda')))
                 expected_step=update(step+1)
                 expected_parameters={n:p.detach().cpu().clone() for n,p in model.named_parameters()}
+                expected_gradients={n:p.grad.detach().cpu().clone() for n,p in model.named_parameters() if p.grad is not None}
                 restored=checkpoint.restore(path,model,optimizer,'decoder-gate',cfg)
+                saved=torch.load(path,map_location='cpu',mmap=True,weights_only=False)
+                recovery={'restored_model':state_difference(saved['model'],model.state_dict()),
+                          'restored_optimizer':state_difference(saved['optimizer'],optimizer.state_dict())}
+                del saved
                 actual_rng=(random.random(),float(np.random.random()),float(torch.rand(1,device='cuda')))
                 actual_step=update(step+1)
-                error=max(float((p.detach().cpu()-expected_parameters[n]).abs().max()) for n,p in model.named_parameters())
-                if expected_rng != actual_rng or restored['data_position'] != step or error > 2e-6 or abs(expected_step['loss']-actual_step['loss']) > 1e-6:
+                recovery.update(rng_equal=expected_rng==actual_rng, data_position=restored['data_position'],
+                                expected_update=expected_step,actual_update=actual_step,
+                                loss_error=abs(expected_step['loss']-actual_step['loss']),
+                                parameters=state_difference(expected_parameters,dict(model.named_parameters())),
+                                gradients=state_difference(expected_gradients,{n:p.grad for n,p in model.named_parameters() if p.grad is not None}))
+                error=recovery['parameters']['max_error']
+                report['recovery']=recovery
+                write_json(out/'decoder-gate.json',report)
+                print('DECODER_RECOVERY',json.dumps(recovery),flush=True)
+                del expected_gradients,expected_parameters
+                if (not recovery['restored_model']['exact'] or not recovery['restored_optimizer']['exact']
+                    or expected_rng != actual_rng or restored['data_position'] != step or error > 2e-6 or recovery['loss_error'] > 1e-6):
+                    # Diagnose a rejected replay; never convert this failure into a pass.
+                    checkpoint.restore(path,model,optimizer,'decoder-gate',cfg)
+                    torch.use_deterministic_algorithms(True)
+                    torch.backends.cudnn.deterministic=True
+                    try:
+                        recovery['strict_determinism_probe']={'update':update(step+1)}
+                    except RuntimeError as exc:
+                        recovery['strict_determinism_probe']={'error':str(exc)}
+                    write_json(out/'decoder-gate.json',report)
+                    print('DECODER_DETERMINISM_PROBE',json.dumps(recovery['strict_determinism_probe']),flush=True)
                     raise AssertionError('Decoder optimizer/RNG recovery mismatch')
                 report['resume_max_parameter_error']=error
                 # Return to the saved state so the enclosing loop performs exactly 64 updates.
                 checkpoint.restore(path,model,optimizer,'decoder-gate',cfg)
-                del expected_parameters
             gc.collect()
     report['train_after'], train_reconstruction = measure(model, loss_fn, x, y)
     report['val_after'], _ = measure(model, loss_fn, vx, vy)
