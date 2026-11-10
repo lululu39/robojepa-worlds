@@ -1,0 +1,20 @@
+{
+  "job_id": "8309850.0",
+  "source": {
+    "commit": "f9d4cc5ae83abf3b6d19deea58e128ac2fdffcc0",
+    "upstream": {
+      "robo_jepa": "f93106f5f4a451fd526d51778aa8ab7c852eb824",
+      "vjepa2": "204698b45b3712590f06245fbfba32d3be539812",
+      "micro_world": "ad8c653c896a48c19cebb3dd4ccf802b40421c7a",
+      "jepa_wms": "13cf1d9c7e476f53c17714d2e0f1dc239a883ce0"
+    }
+  },
+  "complete": false,
+  "formal": false,
+  "exit_code": 1,
+  "gpu_updates": 0,
+  "failure": "Checked 63 packages in 105ms\nFound 1 incompatibility\nThe package `decord` was built for a different platform",
+  "diagnosis": "The installed decord 0.6.0 WHEEL has Tag: cp36-cp36m-manylinux2010_x86_64 while the locked published filename has py3-none-manylinux2010_x86_64. uv misidentifies it as incompatible and re-sync reinstalls it.",
+  "evidence": "Read installed WHEEL metadata from prepared runtime archive; matches https://github.com/dmlc/decord/issues/356 and https://github.com/astral-sh/uv/issues/15832.",
+  "repair": "Accept only this exact known metadata defect on x86_64 with decord0.6.0; reject all other dependency check failures; retain exact version inventory and lock checks; require successful native two-frame video decoding before GPU checks."
+}
