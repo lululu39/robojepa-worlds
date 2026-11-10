@@ -10,6 +10,32 @@ from cluster import workflow,submit as submit_module
 
 
 class WorkflowContracts(unittest.TestCase):
+    def test_model_fix_reuses_preparation_but_requires_new_gpu_gate(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            staging=Path(tmp)
+            for name in ['runtime.tar','capsaicin-data.tar','robojepa-source-weights.tar']:
+                (staging/name).write_bytes(b'x')
+            preparation={'complete':True,'schema':2,'source':{'commit':'old'}}
+            def changed_model(args):
+                paths=args[args.index('--')+1:]
+                return 'robojepa_worlds/model.py' if 'robojepa_worlds' in paths or 'robojepa_worlds/model.py' in paths else ''
+            with patch.object(submit_module,'STAGING',staging), \
+                 patch.object(submit_module,'read_json',return_value=preparation), \
+                 patch.object(submit_module,'command',side_effect=changed_model):
+                submit_module.validate_inputs('gate','new')
+                with self.assertRaisesRegex(RuntimeError,'GPU-validated'):
+                    submit_module.validate_inputs('encode','new')
+
+    def test_preparation_changes_cannot_reuse_old_artifacts(self):
+        for changed in ['robojepa_worlds/prepare.py','robojepa_worlds/reference.py','uv.lock',
+                        'vendor/micro_world','experiments/capsaicin/dataset-manifest.json']:
+            def difference(args):
+                return changed if changed in args[args.index('--')+1:] else ''
+            with patch.object(submit_module,'read_json',return_value={'complete':True,'schema':2,'source':{'commit':'old'}}), \
+                 patch.object(submit_module,'command',side_effect=difference):
+                with self.assertRaisesRegex(RuntimeError,'Preparation source'):
+                    submit_module.validate_inputs('gate','new')
+
     def test_held_and_nonzero_jobs_stop(self):
         for ad in [dict(JobStatus=5),dict(JobStatus=4,ExitCode=1),dict(JobStatus=3),dict(JobStatus=4,ExitCode=0,ExitBySignal=True)]:
             with patch.object(workflow,'command',return_value=json.dumps([ad])):

@@ -17,6 +17,12 @@ JOBS=Path('/home/yzhong239/robojepa-capsaicin-jobs')
 IMAGE='file:///staging/y/yzhong239/gradformer/nanochat-uv-v4.sif'
 INPUT_CODE=['robojepa_worlds','vendor','uv.lock','pyproject.toml','experiments/capsaicin/pilot.json',
             'experiments/capsaicin/dataset-manifest.json','cluster/worker.sh']
+# Only artifact producers determine whether completed preparation can be reused.
+# Model/gate repairs still require a new successful GPU gate before encoding.
+PREPARATION_CODE=['robojepa_worlds/common.py','robojepa_worlds/capsaicin.py',
+                  'robojepa_worlds/reference.py','robojepa_worlds/prepare.py','vendor/micro_world',
+                  'uv.lock','pyproject.toml','experiments/capsaicin/pilot.json',
+                  'experiments/capsaicin/dataset-manifest.json','cluster/worker.sh']
 
 
 def command(args,cwd=ROOT):
@@ -44,7 +50,7 @@ def validate_inputs(stage,commit):
     preparation=read_json(ROOT/'experiments/capsaicin/reports/prepare.json')
     if not preparation.get('complete') or preparation.get('schema')!=2:
         raise RuntimeError('Successful schema-2 preparation required')
-    if command(['git','diff','--name-only',preparation['source']['commit'],commit,'--',*INPUT_CODE]):
+    if command(['git','diff','--name-only',preparation['source']['commit'],commit,'--',*PREPARATION_CODE]):
         raise RuntimeError('Preparation source is incompatible with the queued worker')
     for name in ['runtime.tar','capsaicin-data.tar']+(['robojepa-source-weights.tar'] if stage=='gate' else []):
         artifact=STAGING/name

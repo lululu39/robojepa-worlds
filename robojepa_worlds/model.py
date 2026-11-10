@@ -12,7 +12,10 @@ from .common import ROOT, upstream_path
 def predictor_config():
     cfg=json.loads((ROOT/'vendor/robo_jepa/configs/released/wm-100m/config.json').read_text())
     cfg.pop('encoder_version')
-    cfg.update(num_views=1,view_groups_v=[1],attn_impl='sdpa',use_activation_checkpointing=True)
+    # Keep the released two-view construction: it determines the RoPE split and
+    # creates the pretrained per-block view embeddings. Upstream supports V=1
+    # at forward time through runtime_views; reducing num_views drops weights.
+    cfg.update(attn_impl='sdpa',use_activation_checkpointing=True)
     return cfg
 
 
@@ -50,7 +53,9 @@ class NavigationModel(nn.Module):
                 raise ValueError(f'Unapproved shape change: {name} {value.shape} -> {new.shape}')
             state[name]=new; expanded.append(name)
         self.predictor.load_state_dict(state,strict=True)
-        self.load_report.update(strict=True,tensors=len(state),expanded=expanded)
+        self.load_report.update(strict=True,tensors=len(state),expanded=expanded,
+                                pretrained_num_views=cfg['num_views'],input_num_views=1,
+                                view_embedding_tables=sum(k.endswith('attn.view_embed.weight') for k in state))
         del checkpoint,state,raw
         self.requires_grad_(False)
         # Optimize new task rows only. Old embodiments and the entire trunk stay fixed.

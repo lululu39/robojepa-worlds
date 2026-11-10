@@ -1,0 +1,15 @@
+{
+  "job_id": "8305085.0",
+  "attempt": 1,
+  "stage": "gate",
+  "complete": false,
+  "source_commit": "455c562e4065643f4fd50a0020d164c0dd01d692",
+  "failure": "Strict predictor load rejected 14 pretrained attn.view_embed.weight tensors after adapter set num_views=1",
+  "fix": "Keep released num_views=2 and view_groups_v=[1,2]; supply one runtime camera through upstream mixed-view support",
+  "strict_loading_preserved": true,
+  "encoder_compaction_bytes": 7381094831,
+  "batch_encoding_started": false,
+  "formal_training_started": false,
+  "preparation_reused": true,
+  "gpu_revalidation_required": true
+}
