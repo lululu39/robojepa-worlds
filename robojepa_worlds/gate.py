@@ -46,7 +46,7 @@ def main():
     del encoder,frames; gc.collect(); torch.cuda.empty_cache()
     # Reloaded cached tensors must support ordinary training autograd.
     features=features.clone(); actions=torch.tensor(row['actions'][:states-1],device='cuda')[None]
-    model=NavigationModel(a.weights,train_scope=cfg['train_scope']).cuda(); model.eval()
+    model=NavigationModel(a.weights,seed=cfg['seed']).cuda(); model.eval()
     report['load']=model.load_report
     # Numerical retention check, limited to the model already loaded for this gate.
     raw=torch.load(Path(a.weights)/'predictor.pt',map_location='cpu',mmap=True,weights_only=False)

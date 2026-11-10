@@ -18,5 +18,10 @@
   "gpu_validation": "pending",
   "video_task_complete": false,
   "automatic_execution": "prepare then GPU preflight only",
-  "formal_training_started": false
+  "formal_training_started": false,
+  "retired_entry_points_removed": [
+    "random_initialization",
+    "full_predictor_training"
+  ],
+  "legacy_submission_flag_rejected": true
 }

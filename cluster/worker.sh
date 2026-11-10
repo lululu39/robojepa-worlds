@@ -49,7 +49,7 @@ else
     elif [ "$TASK_STAGE" = train ]; then
         for TASK_ARCHIVE in "$TASK_ROOT"/features-*.tar; do tar -xf "$TASK_ARCHIVE" -C "$TASK_ROOT"; done
         export WANDB_MODE=online NETRC="$TASK_ROOT/.netrc" WANDB_DIR="$TASK_ROOT/results"
-        python -m robojepa_worlds.train --data "$TASK_ROOT/data" --features "$TASK_ROOT/features" --weights "$TASK_ROOT/weights" --out "$TASK_ROOT/results" --checkpoints "$TASK_ROOT/checkpoints" --initialization "$2" --run-id "$3"
+        python -m robojepa_worlds.train --data "$TASK_ROOT/data" --features "$TASK_ROOT/features" --weights "$TASK_ROOT/weights" --out "$TASK_ROOT/results" --checkpoints "$TASK_ROOT/checkpoints" --run-id "$2"
     else
         echo "Unknown stage" >&2; exit 2
     fi

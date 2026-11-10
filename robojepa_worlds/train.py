@@ -19,10 +19,9 @@ from .model import NavigationModel,objective,make_optimizer
 def main():
     p=argparse.ArgumentParser()
     for name in ['data','features','weights','out','checkpoints','run-id']: p.add_argument('--'+name,required=True)
-    p.add_argument('--initialization',choices=['pretrained','random'],required=True); a=p.parse_args()
+    a=p.parse_args()
     if not torch.cuda.is_available() or torch.cuda.device_count()!=1: raise RuntimeError('One GPU required')
     torch.set_num_threads(4); cfg=read_json(ROOT/'experiments/capsaicin/pilot.json')
-    cfg['initialization']=a.initialization
     if not cfg['formal']: raise RuntimeError('This config is a preflight; RGB task integration is not complete')
     source=read_json(ROOT/'source.json'); index=read_json(Path(a.data)/'index.json')
     cfg['source']=source; cfg['dataset_revision']=index['source']['revision']
@@ -31,7 +30,7 @@ def main():
     train_frames=(cfg['source_window_frames']-1)//cfg['frame_stride']+1
     train=FeatureDataset(a.data,a.features,'train',train_frames,cfg['seed'],cfg['temporal_reverse_ratio'])
     val=FeatureDataset(a.data,a.features,'val',cfg['context_frames']+max(cfg['eval_horizons']))
-    model=NavigationModel(a.weights,a.initialization,cfg['seed'],cfg['train_scope']).cuda(); optimizer=make_optimizer(model,cfg)
+    model=NavigationModel(a.weights,seed=cfg['seed']).cuda(); optimizer=make_optimizer(model,cfg)
     step=position=0; previous_seconds=0.; best=None
     if (ckpt/'latest.pt').exists():
         restored=checkpoint.restore(ckpt/'latest.pt',model,optimizer,a.run_id,cfg)
@@ -39,7 +38,7 @@ def main():
     import wandb
     # Credentials are provided via NETRC by the worker; diagnostics never import this module.
     wandb_args=dict(entity=cfg['wandb_entity'],project=cfg['wandb_project'],id=a.run_id,
-                    name='100m-'+a.initialization,config={**cfg,'gpu':torch.cuda.get_device_name(),
+                    name='100m-pretrained-action-adaptation',config={**cfg,'gpu':torch.cuda.get_device_name(),
                     'torch':torch.__version__,'load_report':model.load_report},dir=str(out))
     try:
         run=wandb.init(**wandb_args,resume='allow',settings=wandb.Settings(init_timeout=90))

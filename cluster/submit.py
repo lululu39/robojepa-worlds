@@ -39,14 +39,11 @@ def pack_source(target):
 def main():
     p=argparse.ArgumentParser(); p.add_argument('stage',choices=['prepare','gate','encode','train'])
     p.add_argument('--shard',type=int,choices=range(4),default=0)
-    p.add_argument('--initialization',choices=['pretrained','random'],default='pretrained')
     a=p.parse_args()
     if a.stage=='train':
         cfg=read_json(ROOT/'experiments/capsaicin/pilot.json')
         if not cfg['formal']: raise RuntimeError('Preflight only: complete the RGB task path before formal training')
-        if cfg['train_scope']=='action_only' and a.initialization!='pretrained':
-            raise RuntimeError('Random frozen predictor is not a valid control')
-    key=a.stage+(f'-{a.shard}' if a.stage=='encode' else f'-{a.initialization}' if a.stage=='train' else '')
+    key=a.stage+(f'-{a.shard}' if a.stage=='encode' else '')
     JOBS.mkdir(exist_ok=True); STAGING.mkdir(parents=True,exist_ok=True)
     with (JOBS/'workflow.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -90,7 +87,7 @@ def main():
             remaps.append(f'features.tar={STAGING}/features-{a.shard}.tar')
         run_id=None
         if a.stage=='train':
-            run_id=uuid.uuid4().hex[:8]; args+=f' {a.initialization} {run_id}'
+            run_id=uuid.uuid4().hex[:8]; args+=f' {run_id}'
             for i in range(4):
                 artifact=STAGING/f'features-{i}.tar'
                 if not artifact.is_file() or not artifact.stat().st_size: raise RuntimeError('Missing feature archive')

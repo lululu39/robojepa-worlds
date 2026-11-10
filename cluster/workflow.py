@@ -88,9 +88,8 @@ def tick():
         for i in range(4):
             if f'encode-{i}' not in states: submit('encode','--shard',str(i))
         if all(f'encode-{i}' in completed for i in range(4)):
-            for initialization in ['pretrained']:
-                if 'train-'+initialization not in states: submit('train','--initialization',initialization)
-    return 'complete' if 'train-pretrained' in completed else 'waiting'
+            if 'train' not in states: submit('train')
+    return 'complete' if 'train' in completed else 'waiting'
 
 
 def main():
