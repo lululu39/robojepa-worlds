@@ -7,8 +7,41 @@
   "action_units": "degrees and seven keyboard one-hot channels",
   "action_alignment": "incoming frame; row zero is zero",
   "process_collisions": true,
-  "preflight_only": {"state_stride": 4, "resolution": [176, 320], "metrics": ["latent_mae", "latent_cosine", "persistence", "action_sensitivity"]},
-  "task_completion_requires": ["RGB decoder connected to RoboJEPA predictions", "causal rollout exporting generated/reference videos with matched frame times", "keyboard/camera controllability", "PSNR", "SSIM", "LPIPS with verified normalization", "FVD", "temporal consistency", "motion smoothness"],
-  "unresolved": ["RoboJEPA decoder checkpoint availability and Capsaicin reconstruction quality", "GameWorldScore/IDM dependencies and domain validity", "RGB inference and evaluation implementation"],
-  "video_task_complete": false
+  "preflight_only": {
+    "state_stride": 4,
+    "resolution": [
+      176,
+      320
+    ],
+    "metrics": [
+      "latent_mae",
+      "latent_cosine",
+      "persistence",
+      "action_sensitivity"
+    ]
+  },
+  "task_completion_requires": [
+    "RGB decoder connected to RoboJEPA predictions",
+    "causal rollout exporting generated/reference videos with matched frame times",
+    "keyboard/camera controllability",
+    "PSNR",
+    "SSIM",
+    "LPIPS with verified normalization",
+    "FVD",
+    "temporal consistency",
+    "motion smoothness"
+  ],
+  "unresolved": [
+    "Long-horizon latent drift and loss of scene structure",
+    "Decoder patch artifacts and predicted-versus-real latent distribution mismatch",
+    "Counterfactual physical/directional correctness without matched simulator ground truth",
+    "Full task benchmark including SSIM/FVD and validated motion/control metrics",
+    "GameWorldScore/IDM dependencies and domain validity"
+  ],
+  "video_task_complete": false,
+  "implemented": [
+    "Pretrained JEPA-WMs decoder adapted to real RoboJEPA features; full development/test reconstruction evaluation",
+    "Frozen predictor/decoder RGB rollouts with matched ground truth and PSNR/LPIPS/persistence diagnostics",
+    "Four held-out anchors with six controls and 100-step generated videos; sensitivity and drift diagnostics only"
+  ]
 }
