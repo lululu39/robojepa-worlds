@@ -1,0 +1,10 @@
+{
+  "formal": false,
+  "steps": 100,
+  "max_compute_seconds": 900,
+  "gt_horizons": [1, 5, 10, 20, 40],
+  "control_horizons": [1, 20, 40, 100],
+  "clips": "val/test indices 0 and floor(N/2)",
+  "selection": "fixed before evaluation, no cherry-picking",
+  "training_updates": 0
+}
