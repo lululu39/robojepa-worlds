@@ -1,0 +1,93 @@
+{
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "original_recovery": {
+    "restored_model": {
+      "exact": true,
+      "max_error": 0.0,
+      "worst_key": null,
+      "mismatched_leaves": 0
+    },
+    "restored_optimizer": {
+      "exact": true,
+      "max_error": 0.0,
+      "worst_key": null,
+      "mismatched_leaves": 0
+    },
+    "rng_equal": true,
+    "data_position": 32,
+    "expected_update": {
+      "step": 33,
+      "loss": 0.7833368182182312,
+      "grad_norm": 1.0230395793914795,
+      "mse": 0.02109251171350479,
+      "lpips": 0.5724117159843445
+    },
+    "actual_update": {
+      "step": 33,
+      "loss": 0.7833368182182312,
+      "grad_norm": 1.0230374336242676,
+      "mse": 0.02109251171350479,
+      "lpips": 0.5724117159843445
+    },
+    "loss_error": 0.0,
+    "parameters": {
+      "exact": false,
+      "max_error": 3.870576620101929e-06,
+      "worst_key": "/adapter.weight",
+      "mismatched_leaves": 148
+    },
+    "gradients": {
+      "exact": false,
+      "max_error": 1.4920253306627274e-05,
+      "worst_key": "/decoder.decoder_proj.weight",
+      "mismatched_leaves": 153
+    },
+    "strict_determinism_probe": {
+      "update": {
+        "step": 33,
+        "loss": 0.7833368182182312,
+        "grad_norm": 1.0230387449264526,
+        "mse": 0.02109251171350479,
+        "lpips": 0.5724117159843445
+      }
+    }
+  },
+  "deterministic_replay": {
+    "first": {
+      "step": 34,
+      "loss": 0.7776148319244385,
+      "grad_norm": 1.3141155242919922,
+      "mse": 0.020727001130580902,
+      "lpips": 0.5703448057174683
+    },
+    "second": {
+      "step": 34,
+      "loss": 0.7776148319244385,
+      "grad_norm": 1.3141155242919922,
+      "mse": 0.020727001130580902,
+      "lpips": 0.5703448057174683
+    },
+    "parameters": {
+      "exact": true,
+      "max_error": 0.0,
+      "worst_key": null,
+      "mismatched_leaves": 0
+    }
+  },
+  "diagnosis": "Restored model/optimizer/RNG exact; default backward numerical nondeterminism; strict deterministic replay is exact on the same GPU and same saved state.",
+  "job_id": "8310047.0",
+  "fixed_source": {
+    "commit": "9da3b088e880a40eeb9021a9dab08f09c6d1b473",
+    "upstream": {
+      "robo_jepa": "f93106f5f4a451fd526d51778aa8ab7c852eb824",
+      "vjepa2": "204698b45b3712590f06245fbfba32d3be539812",
+      "micro_world": "ad8c653c896a48c19cebb3dd4ccf802b40421c7a",
+      "jepa_wms": "13cf1d9c7e476f53c17714d2e0f1dc239a883ce0"
+    },
+    "interactive_base_commit": "12f30bd990001eb896c6d2fd1a6bb2cfb148e39f",
+    "interactive_changed_files": [
+      "robojepa_worlds/decoder_gate.py",
+      "experiments/capsaicin/decoder-gate.json"
+    ]
+  }
+}
