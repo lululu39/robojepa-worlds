@@ -9,7 +9,7 @@ from .encode import decode_frames
 
 
 class RgbFeatureDataset:
-    def __init__(self, data, features, split):
+    def __init__(self, data, features, split, cache_size=2):
         self.data = Path(data)
         self.features = Path(features)
         index = read_json(self.data / 'index.json')
@@ -17,6 +17,7 @@ class RgbFeatureDataset:
             raise ValueError('Expected existing schema-2 stride-4 cache')
         self.rows = [r for r in index['clips'] if r['split'] == split]
         self.cache = OrderedDict()
+        self.cache_size = cache_size
 
     def clip(self, i):
         row = self.rows[i]
@@ -30,7 +31,7 @@ class RgbFeatureDataset:
             if len(rgb) != len(latent['features']):
                 raise ValueError('Frame/latent count mismatch')
             self.cache[key] = (latent, rgb)
-            if len(self.cache) > 2:
+            if len(self.cache) > self.cache_size:
                 self.cache.popitem(last=False)
         self.cache.move_to_end(key)
         return self.cache[key]
