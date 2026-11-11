@@ -53,7 +53,7 @@
   },
   "checkpoint_archive": "/staging/y/yzhong239/robojepa-worlds/capsaicin/decoder-train-1e866f14-checkpoints.tar",
   "observed_at": 1794356683.9904318,
-  "status": "running",
+  "status": "complete",
   "formal_training_started": true,
   "wandb_url": "https://wandb.ai/yibozhong657-none/robojepa-capsaicin/runs/1e866f14",
   "resources": {
@@ -97,6 +97,8 @@
     "gpu/peak_memory_bytes": 3734340096
   },
   "gpu": "NVIDIA H100 80GB HBM3",
-  "wandb_state": "running",
-  "wandb_api_confirmed": true
+  "wandb_state": "finished",
+  "wandb_api_confirmed": true,
+  "complete": true,
+  "completed_step": 5000
 }
