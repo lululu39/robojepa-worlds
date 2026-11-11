@@ -52,9 +52,9 @@
     "dataset_sampling": "shuffled_clip_groups_full_frame_coverage"
   },
   "checkpoint_archive": "/staging/y/yzhong239/robojepa-worlds/capsaicin/decoder-train-1e866f14-checkpoints.tar",
-  "observed_at": 1794356421.6527665,
-  "status": "allocated_or_starting",
-  "formal_training_started": false,
+  "observed_at": 1794356683.9904318,
+  "status": "running",
+  "formal_training_started": true,
   "wandb_url": "https://wandb.ai/yibozhong657-none/robojepa-capsaicin/runs/1e866f14",
   "resources": {
     "RequestCpus": 4,
@@ -63,5 +63,40 @@
     "RequestGPUs": 1,
     "RequireGPUs": "/Expr(regexp(\"H100|H200\",DeviceName) &&  !regexp(\"MIG\",DeviceName) && (GlobalMemoryMb >= 76000))/"
   },
-  "recovery_exit_code": 85
+  "recovery_exit_code": 85,
+  "first_update": {
+    "step": 1,
+    "train/loss": 2.124071776866913,
+    "train/mse": 0.13830037787556648,
+    "train/lpips": 0.7410679757595062,
+    "train/grad_norm": 79.86295318603516,
+    "train/joint": 0,
+    "train/adapter_lr": 5e-05,
+    "train/decoder_lr": 0.0,
+    "train/epoch": 0,
+    "train/frames_seen": 16,
+    "train/data_position": 1,
+    "train/seconds_per_step": 2.60672396607697,
+    "train/elapsed_seconds": 17.252115290611982,
+    "gpu/peak_memory_bytes": 1864288256
+  },
+  "latest_update": {
+    "step": 234,
+    "train/loss": 0.5942561104893684,
+    "train/mse": 0.01108958013355732,
+    "train/lpips": 0.48336031287908554,
+    "train/grad_norm": 3.094515800476074,
+    "train/joint": 1,
+    "train/adapter_lr": 0.0009998950431506146,
+    "train/decoder_lr": 9.998950431506148e-06,
+    "train/epoch": 0,
+    "train/frames_seen": 3600,
+    "train/data_position": 234,
+    "train/seconds_per_step": 0.17878837883472443,
+    "train/elapsed_seconds": 94.43538167700171,
+    "gpu/peak_memory_bytes": 3734340096
+  },
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "wandb_state": "running",
+  "wandb_api_confirmed": true
 }
